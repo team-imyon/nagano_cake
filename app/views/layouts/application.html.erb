@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -42,7 +42,7 @@
                 
               <% elsif admin_signed_in? %>
               
-              <li class="nav-item">
+                <li class="nav-item">
                   <%= link_to "商品一覧", public_homes_about_path, method: :delete, class: 'btn btn-success m-2' %>
                 </li>
                 <li class="nav-item">
