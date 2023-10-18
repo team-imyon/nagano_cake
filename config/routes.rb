@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   namespace :public do
     get 'homes/about'
+  end
   namespace :admin do
     get 'order_details/update'
   end
@@ -60,16 +61,17 @@ Rails.application.routes.draw do
     get 'homes/about'
   end
 
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
 
-  devise_for :admin, skip: [:registrations, :passwords] , controllers: {
+devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
+
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+
   sessions: "admin/sessions"
-  }
-
-  devise_for :users
+}
   #ryon
   #ユーザーごとのカスタマイズを表示
   scope module: :public do
@@ -81,4 +83,4 @@ Rails.application.routes.draw do
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+
