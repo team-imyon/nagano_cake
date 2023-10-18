@@ -7,6 +7,7 @@ class CreateOrderDetails < ActiveRecord::Migration[6.1]
       t.integer :prtice,null: false
       t.integer :making_status,null: false, default: 0
 
+
       t.timestamps
     end
   end
