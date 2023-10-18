@@ -11,6 +11,93 @@
   </head>
 
   <body>
+      <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <div class="container">
+          <a class="navbar-brand mr-auto text-light" href="/"><h2>ながのCAKE🍰</h2></a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+              
+                <li class="nav-item  mx-auto">
+                  <%= link_to 'マイページ', about_path, method: :delete, class:'btn btn-success m-2' %>
+                </li>
+              
+                <li class="nav-item">
+                  <%= link_to "商品一覧", public_homes_about_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+                
+                <li class="nav-item">
+                  <%= link_to "カート", public_homes_about_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+                
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+                
+              <% elsif admin_signed_in? %>
+              
+              <li class="nav-item">
+                  <%= link_to "商品一覧", public_homes_about_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "会員一覧", public_homes_about_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "注文履歴一覧", public_homes_about_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ジャンル一覧", public_homes_about_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-success m-2' %>
+                </li>
+              
+              <% else %>
+
+                <li class="nav-item ">
+                  <%= link_to "About", public_homes_about_path, class: 'btn btn-success m-2' %>
+                </li>
+                
+                <li class="nav-item">
+                  <%= link_to "商品一覧", public_homes_about_path, class: 'btn btn-success m-2' %>
+                </li>
+                
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-success m-2' %>
+                </li>
+                
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-success m-2' %>
+                </li>
+
+              <% end %>
+            </ul>
+          </div>
+
+          
+        </div>
+      </nav>  
+    </header>
+    
+    <main>
     <%= yield %>
+    </main>
+    
+    <footer class='fixed-bottom text-light bg-warning'>
+      <div class="container">
+        	<div class='row'>
+          	<div class='mx-auto my-3'>
+          		<h5>ながのCAKE🍰</h5>
+          	</div>
+          </div>
+      </div>
+    </footer>
+
   </body>
 </html>
