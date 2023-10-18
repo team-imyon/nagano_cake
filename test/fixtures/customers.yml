@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  is_ative: false
+  last_name: MyString
+  first_name: MyString
+  furigana_last_name: MyString
+  furigana_first_name: MyString
+  email: MyString
+  post_code: MyString
+  address: MyString
+  tel_number: MyString
+  encrypted_password: MyString
+  created_at: 2023-10-17 16:56:46
+  update_at: 2023-10-17 16:56:46
+
+two:
+  id: 1
+  is_ative: false
+  last_name: MyString
+  first_name: MyString
+  furigana_last_name: MyString
+  furigana_first_name: MyString
+  email: MyString
+  post_code: MyString
+  address: MyString
+  tel_number: MyString
+  encrypted_password: MyString
+  created_at: 2023-10-17 16:56:46
+  update_at: 2023-10-17 16:56:46
