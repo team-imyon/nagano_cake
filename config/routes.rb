@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'order_details/update'
   end
   namespace :admin do
+    get 'orders/index'
     get 'orders/show'
   end
   namespace :admin do
