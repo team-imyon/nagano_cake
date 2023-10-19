@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  
+  #ryon
   def show
     @customer = current_customer
   end
