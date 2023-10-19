@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'customers/show'
     get 'customers/edit'
-    get 'customers/update'
+    patch 'customers/update'
     get 'customers/quit'
     get 'customers/withdraw'
   end
@@ -78,8 +78,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     #"表示URL"=>"controller#action" で表示ページを記載
     get "customers/mypage" => "customers#show"
-    get "customers/information/edit" => "customers#edit"
-    patch "customers/information" => "customers#update"
+    get "customers/edit" => "customers#edit"
+    patch "customers" => "customers#update"
   end
 end
 
