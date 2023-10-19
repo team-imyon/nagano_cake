@@ -1,9 +1,22 @@
 # ryon
 ja: #日本語の設定
-    enums: #enumの設定
+  enums: #enumの設定
       order: #モデル名
         payment_method: #カラム名
         # ０と１に対して日本語で紐付け
         # 要素の数だけ追加
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+        status: #カラム名
+          waiting: "入金待ち"
+          confirmation: "入金確認"
+          production: "製作中"
+          preparing: "発送準備中"
+          shipped: "発送済み"
+
+      order_detail: #モデル名
+        making_status: #カラム名
+          cannot_start: "着手不可"
+          waiting: "製作待ち"
+          production: "製作中"
+          completed: "製作完了"
