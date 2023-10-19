@@ -1,0 +1,9 @@
+# ryon
+ja: #日本語の設定
+    enums: #enumの設定
+      order: #モデル名
+        payment_method: #カラム名
+        # ０と１に対して日本語で紐付け
+        # 要素の数だけ追加
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
