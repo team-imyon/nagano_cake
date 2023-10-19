@@ -9,6 +9,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    # 顧客の注文履歴
+    @index = current_customer.orders
   end
 
   def show
