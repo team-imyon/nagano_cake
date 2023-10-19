@@ -117,6 +117,8 @@ class Public::OrdersController < ApplicationController
     #where〜 ログイン中の会員の注文のみを取得
     #order(created_at: :desc) で最新の注文が最初に表示される
     @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+    # 顧客の注文履歴
+    @index = current_customer.orders
   end
 
   def show
