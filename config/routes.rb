@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
 
-  
+
 
   namespace :public do
     get 'addresses/index'
@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     get 'homes/about'
   end
 
+
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -68,16 +69,18 @@ devise_for :customers,skip: [:passwords], controllers: {
 
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+
   sessions: "admin/sessions"
 }
   #ryon
   #ユーザーごとのカスタマイズを表示
-  #scope module: :public do
+  scope module: :public do
     #"表示URL"=>"controller#action" で表示ページを記載
-    #get "customers/mypage" => "customers#show"
-    #get "customers/information/edit" => "customers#edit"
-    #patch "customers/information" => "customers#update"
-  #end
-  
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    get "customers/mypage" => "customers#show"
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
+  end
 end
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
