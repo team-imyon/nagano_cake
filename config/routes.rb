@@ -1,86 +1,75 @@
 Rails.application.routes.draw do
 
   root to: 'public/homes#top'
-  namespace :public do
-    get 'homes/about'
-  end
-  namespace :admin do
-    get 'order_details/update'
-  end
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/edit'
-    get 'items/show'
-  end
-  namespace :admin do
-    get 'homes/top'
+    get "/about" => "public/homes#about"
+
+  scope module: :public do
+    resources :items, only: [:index, :show]
   end
 
-
-
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    patch 'customers/update'
-    get 'customers/quit'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-
-
-devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-
-  sessions: "admin/sessions"
-}
-  #ryon
   #ユーザーごとのカスタマイズを表示
   scope module: :public do
+    resources :customers, only: [:edit, :update]
     #"表示URL"=>"controller#action" で表示ページを記載
-    get "customers/mypage" => "customers#show"
-    get "customers/edit" => "customers#edit"
-    patch "customers" => "customers#update"
+    get "customers/my_page" => "customers#show"
+    get 'customers/quit' => "customers#quit"
+    patch 'customers/withdraw' => 'customers#withdraw'
   end
+
+
+  scope module: :public do
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
+  end
+
+  scope module: :public do
+    resources :orders, only: [:new,  :create, :index, :show]
+    post "orders/confirm" => "orders#confirm"
+    get "orders/complete" => "orders#complete"
+  end
+
+  scope module: :public do
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
+
+
+
+   get "/admin" => "admin/homes#top"
+
+  namespace :admin do
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  end
+
+
+  namespace :admin do
+    resources :genres, only: [:index, :create, :edit, :update]
+  end
+
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
+
+
+  namespace :admin do
+    resources :orders, only: [:show, :update]
+  end
+
+  namespace :admin do
+    resources :order_details, only: [:update]
+  end
+
+
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+
+    sessions: "admin/sessions"
+  }
+
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
