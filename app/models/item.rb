@@ -2,6 +2,15 @@ class Item < ApplicationRecord
   
   has_one_attached :image
   
+  has_many :cart_items, dependent: :destroy
+  # 商品情報は沢山のcart_itemsを持っている。
+  
+  has_many :order_details, dependent: :destroy
+  # 商品情報は沢山のorder_details(注文履歴の商品)を持っている。
+  
+  belongs_to :genre
+  # 商品情報に繋がっているのはgenreのみ
+  
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/cake.jpg')
@@ -9,4 +18,5 @@ class Item < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [100, 100]).processed
   end
+  
 end
