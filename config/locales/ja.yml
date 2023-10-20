@@ -20,8 +20,30 @@ ja: #日本語の設定
           waiting: "製作待ち"
           production: "製作中"
           completed: "製作完了"
-          
+
 activerecord:
+
+   models:
+        customer: "会員"
+        admin: "管理者"
+      attributes: # model毎に定義したいattributesを記述
+        #customerのカラムの日本語化
+        customer:
+          current_password: "現在のパスワード"
+          email: "メールアドレス"
+          last_name: "(姓）"
+          first_name: "名前（名）"
+          last_name_kana: "ナマエ（姓）"
+          first_name_kana: "ナマエ（名）"
+          postal_code: "郵便番号"
+          address: "住所"
+          phone_number: "電話番号"
+          password: "パスワード"
+          password_confirmation: "確認用パスワード"
+          remember_me: "ログインを記憶"
+        #adminのカラムの日本語化
+        
+        
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -38,7 +60,7 @@ activerecord:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -64,7 +86,7 @@ activerecord:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -201,4 +223,4 @@ activerecord:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
-    pm: 午後          
+    pm: 午後
