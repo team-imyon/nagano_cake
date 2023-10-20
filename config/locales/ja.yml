@@ -21,14 +21,14 @@ ja: #日本語の設定
           production: "製作中"
           completed: "製作完了"
 
-activerecord:
-
-   models:
-        customer: "会員"
-        admin: "管理者"
-      attributes: # model毎に定義したいattributesを記述
+  activerecord:
+    models:
+      customer: "会員"
+      admin: "管理者"
+      
+  attributes: # model毎に定義したいattributesを記述
         #customerのカラムの日本語化
-        customer:
+      customer:
           current_password: "現在のパスワード"
           email: "メールアドレス"
           last_name: "(姓）"
