@@ -15,11 +15,11 @@
       <div class="row d-flex justify-content-center">
           <diV class="offset-1 col-2">
             <div class="field my-3" >
-              <%= f.label :メールアドレス, class: "my-3" %></br>
-              <%= f.label :パスワード, class: "my-3" %>
+              <%= f.label :email, "メールアドレス", class: "my-3" %></br>
+              <%= f.label :encrypted_password, "パスワード", class: "my-3" %>
             </div>
           </diV>
-      
+
           <diV class="col-4">
             <div class="field my-3">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mx-auto my-3" %></br>
@@ -40,5 +40,5 @@
         <%= render "public/shared/links" %>
     </diV>
   </diV>
-  
+
 </div>
