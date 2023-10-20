@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:index, :show, :update]
   end
 
   namespace :admin do
