@@ -22,7 +22,7 @@
         <td><%= i.id %></td>
         <td><%= link_to i.name, admin_items_show_path(@items) %></td>
         <td><%= i.price %></td>
-        <td><%= i.genre_id %></td>
+        <td><%= i.genre.id %></td>
         <td><%= i.is_active %></td>
       <% end %>
       </tr>
