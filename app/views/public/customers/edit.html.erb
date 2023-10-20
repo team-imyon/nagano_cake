@@ -1,9 +1,9 @@
-<!--ryon-->
+顧客の登録情報編集する画面
 <div class="container">
   <div class="row">
     <div class="col">
       <h4 class="my-5">会員情報編集</h4>
-      <%= form_with model: @customer, url: public_customers_update_path, method: :patch do |f| %>
+      <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
       <table class="table table-borderless">
           <tr>
             <td>氏名</td>
@@ -44,7 +44,7 @@
           <tr>
             <td></td>
             <td><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
-            <td><%= link_to "退会する", public_customers_quit_path, class:"btn btn-danger" %></td>
+            <td><%= link_to "退会する", customers_quit_path, class:"btn btn-danger" %></td>
           </tr>
         </table>
       <% end %>
