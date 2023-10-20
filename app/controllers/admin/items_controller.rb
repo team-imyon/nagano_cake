@@ -5,6 +5,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+  end
+  
+  def create
+    item = @item
+    item.save
+    redirect_to 'admin/items/:id'
   end
 
   def edit
@@ -12,4 +19,11 @@ class Admin::ItemsController < ApplicationController
 
   def show
   end
+  
+  private
+  # ストロングパラメータ
+  def list_params
+    params.require(:item).permit(:image, :name, :explanation, :price)
+  end
+  
 end
