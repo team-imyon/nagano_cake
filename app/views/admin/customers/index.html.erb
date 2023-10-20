@@ -4,29 +4,29 @@
       会員一覧
     </h5>
   </div>
-  
-  
+
+
   <div class="row">
     <table class="table">
-      
+
     <tr>
       <th>会員ID</th>
       <th>氏名</th>
       <th>メールアドレス</th>
       <th>ステータス</th>
     </tr>
-    
+
     <tr>
-    <% @customers.each do |i| %>
-      <td><%= i.id %></td>
-      <td><%= link_to i.full_name, admin_customers_show_path(@customers) %></td>
-      <td><%= i.email %></td>
-      <td><%= i.is_active %></td>
+    <% @customers.each do |customer| %>
+      <td><%= customer.id %></td>
+      <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.is_active %></td>
     <% end %>
     </tr>
     </table>
   </div>
-  
+
   <%= paginate @customers %>
-  
+
 </div>
