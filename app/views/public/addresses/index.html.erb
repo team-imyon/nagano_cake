@@ -1,13 +1,12 @@
-<p>Find me in app/views/public/addresses/index.html.erb</p>
 <div class="container">
-  <div class="row">
-    <h5　class="border d-flex justify-content-start my-5 px-3">
+  <div class="row my-5">
+    <h5 class="d-flex justify-content-start border px-3">
     配送先登録/一覧
   </h5>
   </div>
   
-  <%= form_with model: @address do |f| %>
-    <div class="row d-flex justify-content-center">
+  <%= form_with model: @naddress do |f| %>
+    <div class="row d-flex justify-content-center my-3">
       <diV class="title">
         <div class="field my-1" >
           <%= f.label :"郵便番号(ハイフンなし)", class: "my-1" %></br>
@@ -18,34 +17,34 @@
 
       <diV class="text offset-1">
         <div class="field my-1">
-          <%= f.text_field :post_code, class: "my-1" %></br>
-          <%= f.text_field :address, class: "my-1" %></br>
-          <%= f.text_field :name, class: "my-1" %>
+          <%= f.text_field :post_code, class: "rounded my-1" %></br>
+          <%= f.text_field :address, class: "rounded my-1" %></br>
+          <%= f.text_field :name, class: "rounded my-1" %>
           <%= f.submit "登録",class:"btn btn-success my-1" %>
         </div>
       </div>
     </div>
   <%end %>
   
-  
-  <diV class="row d-flex justify-content-center">
-    <table class="table">
+
+  <diV class="row d-flex justify-content-center my-3">
+    <table class="table table-bordered">
       <tr>
         <th>郵便番号</th>
         <th>住所</th>
         <th>宛名</th>
-        <th colspan="2"></th>
+
       </tr>
       
       <tr>
-      <% @address.each do |a| %>
-        <td><%= a.post_code %></td>
-        <td><%= a.address %></td>
-        <td><%= a.name %></td>
-        <td><%= link_to "Edit", public_about_path(@address.id), class:"btn btn-sm btn-success" %>
-            <%= link_to "Destroy", public_about_path(@address.id), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
-        </td>
-      <% end %>
+        <% @address.each do |a| %>
+          <td><%= a.post_code %></td>
+          <td><%= a.address %></td>
+          <td><%= a.name %></td>
+          <td><%= link_to "編集する", edit_address_path(a.id), class:"btn btn-sm btn-success" %>
+              <%= link_to "削除する", address_path(a.id), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          </td>
+        <% end %>
       </tr>
     </table>
   </diV>
