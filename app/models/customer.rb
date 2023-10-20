@@ -3,9 +3,19 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   def full_name
     self.last_name+" "+self.first_name
+
+
+  end
+
+  def furigana_full_name
+    self.furigana_last_name+" "+self.furigana_first_name
+
+  end
+
+
     # ↑注文履歴とかでフルネームを表示する方法
 
   end
@@ -16,4 +26,5 @@ class Customer < ApplicationRecord
   # 会員は注文を沢山持っている
   has_many :cart_items, dependent: :destroy
   # 会員はカートアイテムを沢山持っている
+
 end
