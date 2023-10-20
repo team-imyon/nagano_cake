@@ -27,29 +27,30 @@ ja: #日本語の設定
       admin: "管理者"
       
   attributes: # model毎に定義したいattributesを記述
-        #customerのカラムの日本語化
-      customer:
-          current_password: "現在のパスワード"
-          email: "メールアドレス"
-          last_name: "(姓）"
-          first_name: "名前（名）"
-          last_name_kana: "ナマエ（姓）"
-          first_name_kana: "ナマエ（名）"
-          postal_code: "郵便番号"
-          address: "住所"
-          phone_number: "電話番号"
-          password: "パスワード"
-          password_confirmation: "確認用パスワード"
-          remember_me: "ログインを記憶"
-        #adminのカラムの日本語化
+    #customerのカラムの日本語化
+    customer:
+      current_password: "現在のパスワード"
+      email: "メールアドレス"
+      last_name: "(姓）"
+      first_name: "名前（名）"
+      last_name_kana: "ナマエ（姓）"
+      first_name_kana: "ナマエ（名）"
+      postal_code: "郵便番号"
+      address: "住所"
+      phone_number: "電話番号"
+      password: "パスワード"
+      password_confirmation: "確認用パスワード"
+      remember_me: "ログインを記憶"
+      #adminのカラムの日本語化
         
         
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+  errors:
+    messages:
+      record_invalid: 'バリデーションに失敗しました: %{errors}'
+      restrict_dependent_destroy:
+        has_one: "%{record}が存在しているので削除できません"
+        has_many: "%{record}が存在しているので削除できません"
+        
   date:
     abbr_day_names:
     - 日
