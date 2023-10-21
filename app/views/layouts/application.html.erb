@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,6 +14,12 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <div class="container">
           <a class="navbar-brand mr-auto text-light" href="/"><h2>ながのCAKE🍰</h2></a>
+          
+          <% if customer_signed_in? %>
+            <div class="nav-item text-light mx-3">
+              ようこそ、<%= current_customer.last_name %>さん！
+            </div>
+          <% end %>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +28,6 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
-
                 <li class="nav-item">
                   <%= link_to 'マイページ', customers_my_page_path, class:'btn btn-success m-2' %>
                 </li>
