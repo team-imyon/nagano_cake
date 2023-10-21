@@ -4,30 +4,36 @@
     <div class="col-md-12">
       <h3>注文履歴一覧</h3>
       <table class="table">
-        <tr>
-          <td>購入日時</td>
-          <td>購入者</td>
-          <td>注文個数</td>
-          <td>注文ステータス</td>
-        </tr>
+        <thead>
+          <tr>
+            <td>購入日時</td>
+            <td>購入者</td>
+            <td>注文個数</td>
+            <td>注文ステータス</td>
+          </tr>
+        </thead>
         <!--各注文情報に対して繰り返し処理-->
-        <% @orders.each do |order| %>
-
-        <tr>
-          <!--注文日をYYYY/MM/DD表示-->
-          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-          <!--購入者名の表示-->
-          <td><%= customer.full_name %></td>
-          <!--注文個数-->
- 　        <td><%= order_detail.amount %></td>
-          <!--注文ステータスを表示-->
-          <!--status_i18n メソッドでステータスを国際化されたテキストに変換表示-->
-          <td><%= order.status_i18n %></td>
-        </tr>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <!--注文日をYYYY/MM/DD表示-->
+              <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <!--購入者名の表示-->
+              <td><%= customer.full_name %></td>
+              <!--注文個数-->
+     　        <td><%= order_detail.amount %></td>
+              <!--注文ステータスを表示-->
+              <!--status_i18n メソッドでステータスを国際化されたテキストに変換表示-->
+              <td><%= order.status_i18n %></td>
+            </tr>
         <% end %>
+        </tbody>
       </table>
       <!--ページネーションを表示-->
-      <%= paginate @orders, theme: 'bootstrap-5' %>
+      
+      <div class="d-flex justify-content-center">
+        <%= paginate @orders, theme: 'bootstrap-5' %>
+      </div>
 
     </div>
   </div>

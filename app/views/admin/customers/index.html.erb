@@ -8,27 +8,33 @@
 
   <div class="row">
     <table class="table">
-      <tr>
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
-  
-      <% @customers.each do |customer| %>
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.id %></td>
           <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
           <td><%= customer.email %></td>
-          <td><%= customer.is_active %></td>
-          <td><% if customer.is_active %>
-          
+          <td>
+            <% if customer.is_active %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-secondary">退会</p>
+            <% end %>
           </td>
         </tr>
-      <% end %>
+        <% end %>
+      </tbody>
     </table>
   </div>
-
-  <%= paginate @customers %>
-
+  <div class="d-flex justify-content-center">
+  <%= paginate @customers, theme: 'bootstrap-5' %>
+  </div>
 </div>

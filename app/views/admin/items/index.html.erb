@@ -1,13 +1,21 @@
 <div class="container">
   <div class="row">
-    <h5 class="border d-flex justify-content-start my-5 px-3">
+    <div class="col-auto border d-flex justify-content-start my-5 px-3">
+    <h5>
       商品一覧
     </h5>
-  </div>
+    </div>
 
+    <div class="col-auto text-right my-5">
+      <button type="button" class="btn btn-outline-secondary btn-light rounded-circle p-0" style="width:2rem;height:2rem;">
+        <%= link_to "＋", new_admin_item_path, class:"text-secondary"%>
+      </button>
+    </div>
+  </div>
 
   <div class="row">
     <table class="table">
+
       <tr>
         <th>商品ID</th>
         <th>商品名</th>
@@ -31,6 +39,7 @@
         </td>
       </tr>
       <% end %>
+
     </table>
   </div>
 
