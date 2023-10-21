@@ -1,2 +1,10 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<h3>商品一覧</h3>
+  <% @items.each do |item| %>
+    <%= image_tag item.get_image(100,100) %>
+    <%= item.name %>
+    <%= item.price %>
+  <% end %>
+
+<div class="d-flex justify-content-center">
+  <%= paginate @items, theme: 'bootstrap-5' %>
+</div>
