@@ -4,7 +4,7 @@
     <div class="col">
       <h2>商品新規登録</h2>
 
- 　　   <%= form_with model: @item do |f| %>
+ 　　   <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
       <table class="table table-borderless">
 
 
@@ -15,12 +15,12 @@
 
         <tr>
           <td>商品名</td>
-          <td><%= f.text_field :name, placeholder: "商品名" %></td>
+          <td><%= f.text_field :name, style: "width:60%", placeholder: "商品名" %></td>
         </tr>
 
         <tr>
           <td>商品説明</td>
-          <td><%= f.text_area :explanation, placeholder: "ここに説明文を記述します" %></td>
+          <td><%= f.text_area :explanation, style: "width:60%", rows: "5", placeholder: "ここに説明文を記述します" %></td>
         </tr>
 
 
@@ -39,19 +39,19 @@
       <tr>
         <td>販売ステータス</td>
         <td>
-          <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_deleted, "販売中", { value: :false }  %>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売中", { value: :false }  %>
 
-          <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_deleted, "販売停止中", { value: :true } %>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売停止中", { value: :true } %>
         </td>
       </tr>
 
       <tr>
         <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
       </tr>
-　　　<% end %>
     </table>
+    <% end %>
     </div>
   </div>
 </div>

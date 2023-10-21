@@ -19,10 +19,16 @@
       <% @items.each do |i| %>
       <tr>
         <td><%= i.id %></td>
-        <td><%= link_to i.name, admin_items_show_path(@items) %></td>
+        <td><%= link_to i.name, admin_item_path(@items) %></td>
         <td><%= i.price %></td>
         <td><%= i.genre.id %></td>
-        <td><%= i.is_active %></td>
+        <td>
+        <% if i.is_active %>
+        <p class="text-success">販売中</p>
+        <% else %>
+         <p class="text-secondary">販売停止中</p>
+        <% end %>
+        </td>
       </tr>
       <% end %>
     </table>
