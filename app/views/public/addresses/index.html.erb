@@ -33,19 +33,18 @@
         <th>郵便番号</th>
         <th>住所</th>
         <th>宛名</th>
-
       </tr>
       
-      <tr>
-        <% @address.each do |a| %>
+      <% @address.each do |a| %>
+        <tr>
           <td><%= a.post_code %></td>
           <td><%= a.address %></td>
           <td><%= a.name %></td>
           <td><%= link_to "編集する", edit_address_path(a.id), class:"btn btn-sm btn-success" %>
               <%= link_to "削除する", address_path(a.id), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
           </td>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     </table>
   </diV>
 
