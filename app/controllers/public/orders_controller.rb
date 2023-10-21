@@ -107,13 +107,13 @@ class Public::OrdersController < ApplicationController
       # 注文処理後、カート内を全て削除
       @cart_items.destroy_all
       # 注文正常処理後、注文完了を知らせる
-      redirect_to complete_orders_path 
+      redirect_to complete_orders_path
     else #注文処理失敗
       # 他のviewを表示しエラーメッセージを表示
       render :items
     end
   end
-  
+
 
   def complete
   end
@@ -122,7 +122,7 @@ class Public::OrdersController < ApplicationController
     #ryon
     #where〜 ログイン中の会員の注文のみを取得
     #order(created_at: :desc) で最新の注文が最初に表示される
-    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page]).per(10)
     # 顧客の注文履歴
     @index = current_customer.orders
   end
@@ -131,5 +131,5 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
   end
-  
+
 end

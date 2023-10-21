@@ -1,12 +1,11 @@
-<p>Find me in app/views/admin/items/index.html.erb</p>
 <div class="container">
   <div class="row">
     <h5 class="border d-flex justify-content-start my-5 px-3">
       商品一覧
     </h5>
   </div>
-  
-  
+
+
   <div class="row">
     <table class="table">
       <tr>
@@ -16,7 +15,7 @@
         <th>ジャンル</th>
         <th>ステータス</th>
       </tr>
-      
+
       <tr>
       <% @items.each do |i| %>
         <td><%= i.id %></td>
@@ -28,7 +27,7 @@
       </tr>
     </table>
   </div>
-  
+
   <%= paginate @items %>
-  
+
 </div>
