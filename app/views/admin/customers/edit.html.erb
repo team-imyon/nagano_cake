@@ -7,10 +7,10 @@
       <table class="table table-borderless">
           <tr>
             <td>会員ID</td>
-            <td><%= customer.id %></td>
+            <td><%= @customer.id %></td>
             <td></td>
           </tr>
-        
+
           <tr>
             <td>氏名</td>
             <td><%= f.text_field :last_name %></td>
@@ -46,17 +46,18 @@
             <td><%= f.text_field :email %></td>
             <td></td>
           </tr>
-          
+
           <tr>
             <td>会員ステータス</td>
             <td>
-              <%= f.radio_button :is_active, :false %>
-              <%= f.label :is_active, "有効", { value: :true }  %>
-              
+
               <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "有効", { value: :true }  %>
+
+              <%= f.radio_button :is_active, :false %>
               <%= f.label :is_active, "退会", { value: :false } %>
             </td>
-          </tr>      
+          </tr>
 
           <tr>
             <td></td>

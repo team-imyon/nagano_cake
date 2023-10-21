@@ -1,21 +1,28 @@
 ショッピングカート
-<table>
+
+<%= link_to "カートを空にする", "#", class:"btn btn-danger" %>
+<table class="table table-bordered">
   <tr>
     <th>商品名</th>
     <th>単価(税込み)</th>
     <th>数量</th>
-    <th>小計</th>
+    <th>小計<th>
+    <th></th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>あ</td>
+    <td>い</td>
+    <td>う</td>
+    <td><%= link_to "変更", "#", class:"btn btn-success" %></td>
+    <td><%= link_to "削除する", "#", class:"btn btn-danger" %></</td>
   </tr>
 </table>
+<%= link_to "買い物を続ける", "#", class:"btn btn-primary" %>
+
+<table class="tabele table-bordered">
+  <tr>
+    <th>合計金額</th><td></td>
+  </tr>
+</table>
+
+<%= link_to "情報入力に進む", "#", class:"btn btn-success" %>
