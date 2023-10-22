@@ -1,13 +1,24 @@
-<h3>商品一覧</h3>
-  <% @items.each do |item| %>
-    <!--< %= link_to %>-->
-    <!--< % end %>-->
-    <%= image_tag item.get_image(100,100) %>
-    <%= item.id %>
-    <%= item.name %>
-    <%= item.price %>
-  <% end %>
-
-<div class="d-flex justify-content-center">
-  <%= paginate @items, theme: 'bootstrap-5' %>
+<!--<div class="item-wrap">-->
+  <!--#cssで定義したコンテンツを中央へ-->
+  
+<div class="container">
+  <div class="row">
+    <div class="col-auto">
+      <h3>商品一覧</h3>
+      
+        <% @items.each do |item| %>
+          <%= image_tag item.get_image(100,100) %>
+          <%= item.id %>
+            <%= link_to item_path(item.id) do %>
+             <%= item.name %>
+            <% end %>
+          <%= item.price %>
+      
+        <% end %>
+      
+      <div class="d-flex justify-content-center">
+        <%= paginate @items, theme: 'bootstrap-5' %>
+      </div>
+  </div>
+ </div>
 </div>
