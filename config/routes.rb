@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get "customers/my_page" => "customers#show"
     get 'customers/quit' => "customers#quit"
     patch 'customers/withdraw' => 'customers#withdraw'
+    get  '/customers/quit' => 'customers#quit'
+    patch  '/customers/withdraw' => 'customers#withdraw'
   end
 
 
