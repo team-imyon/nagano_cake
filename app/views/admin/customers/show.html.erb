@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h4 class="my-5">マイページ</h4>
-      <div class="d-flex align-items-center">
-        <h3><b><%= @customer.full_name %>さんの会員詳細</b></h3>
-      </div>
-        <table class="table">
+      <h5 class="border d-flex justify-content-start my-5 px-3" >
+        <%= @customer.full_name %>さんの会員詳細
+      </h5>
+  </div>
+    
+        <table class="table table-borderless">
           <tr>
             <td class="bd-light">会員ID</td>
             <td><%= @customer.id %></td>
@@ -56,6 +56,4 @@
             <%= link_to "編集する", edit_admin_customer_path, class:"btn btn-success ml-3" %>
             <%= link_to "注文履歴一覧を見る", admin_order_path, class:"btn btn-primary ml-3" %>
           </div>
-    </div>
-  </div>
 </div>

@@ -1,9 +1,12 @@
   <!--ryon-->
   <div class="container">
     <div class="row">
-      <h5 class="border d-flex justify-content-start my-5 px-3" >ジャンル一覧・追加</h5>
+      <h5 class="border d-flex justify-content-start my-5 px-3" >
+        ジャンル一覧・追加
+      </h5>
     </div>
-
+    
+    <div class="row">
     <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
       <div class="table table-borderless">
         <tr>
@@ -13,18 +16,26 @@
         </tr>
       </div>
     <% end %>
+    </div>
 
     <div class="row">
+      <div class="pull-left">
       <table class="table">
           <tr>
-          <td>ジャンル</td>
+          <th>ジャンル</th>
+          <td></td>
+          <td></td>
+          <td></td>
           </tr>
           <% @genres.each do |genre| %>
           <tr>
             <td><%= genre.name %></td>
+            <td></td>
+            <td></td>
             <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
           </tr>
           <% end %>
       </table>
+      </div>
     </div>
   </div>
