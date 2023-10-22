@@ -1,4 +1,7 @@
 class Admin::ItemsController < ApplicationController
+# rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+  
   def index
     @items = Item.all.page(params[:page]).per(10)
 
@@ -34,6 +37,9 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @genre = @item.genre
+    # @order_detailを取得
+    @order_detail = OrderDetail.find_by(item_id: @item.id)
   end
 
   private
@@ -41,5 +47,10 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :explanation, :genre_id, :price, :is_active)
   end
+  
+  # def record_not_found
+    # flash[:alert] = "アイテムが見つかりません"
+    # redirect_to item_path # リダイレクト先を指定してください
+  # end
 
 end

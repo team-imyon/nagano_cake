@@ -17,7 +17,8 @@ class Admin::GenresController < ApplicationController
     else
     # エラーの場合ジャンル一覧に戻る
       @genres = Genre.all
-      render :index
+      redirect_to admin_genres_path
+      
     end
   end
 
@@ -36,6 +37,7 @@ class Admin::GenresController < ApplicationController
     else
       # エラーの場合ジャンル編集に戻る
       render :edit
+      # redirect_to admin_genre_path
     end
   end
 
