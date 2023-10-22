@@ -6,20 +6,23 @@
   </div>
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row d-flex justify-content-center">
-      <diV class="col-2 offset-1">
-        <div class="field my-3" >
-          <%= f.label :メールアドレス, class: "my-3" %></br>
-          <%= f.label :パスワード, class: "my-3" %>
-        </div>
-      </diV>
-      <diV class="col-3">
-        <div class="field my-3">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mx-auto my-3" %></br>
-          <%= f.password_field :password, autocomplete: "current-password", class: "password my-3" %></br>
-          <%= f.submit "ログイン",class:"btn btn-primary my-3" %>
-        </div>
-      </div>
+    <div class="row ">
+      <table class="table table-borderless d-flex justify-content-center">
+        <tr class="field my-auto">
+          <td><%= f.label :メールアドレス, class: "my-auto" %>
+          <td class="colspan-"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", size: 40, class: "rounded mx-auto my-auto" %></td>
+        </tr>
+
+        <tr class="field my-auto">
+          <td><%= f.label :パスワード, class: "my-auto" %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password", size: 40, class: "rounded password my-auto" %></td>
+        </tr>
+        
+        <tr>
+          <td class="colspan-1"></td>
+          <td><%= f.submit "ログイン",class:"btn btn-primary my-3" %></td>
+        </tr>
+      </table>
     </diV>
   <% end %>
       <%= render "admin/shared/links" %>
