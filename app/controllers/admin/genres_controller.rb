@@ -16,6 +16,7 @@ class Admin::GenresController < ApplicationController
       redirect_to admin_genres_path
     else
     # エラーの場合ジャンル一覧に戻る
+      @genres = Genre.all
       render :index
     end
   end
