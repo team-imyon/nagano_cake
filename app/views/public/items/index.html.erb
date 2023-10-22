@@ -1,6 +1,9 @@
 <h3>商品一覧</h3>
   <% @items.each do |item| %>
+    <!--< %= link_to %>-->
+    <!--< % end %>-->
     <%= image_tag item.get_image(100,100) %>
+    <%= item.id %>
     <%= item.name %>
     <%= item.price %>
   <% end %>
