@@ -76,8 +76,8 @@ class Public::OrdersController < ApplicationController
         @order.status = 1 #銀行振込
       end
 
-      address_type = params[:order][:address_type]
-      #address_typeに応じて異なる配送先情報を@oederに設定
+    address_type = params[:order][:address_type]
+    #address_typeに応じて異なる配送先情報を@oederに設定
     case address_type
     when "customer_address" #カスタマーの登録住所を@orderに設定
       @order.post_code = current_customer.post_code
@@ -97,8 +97,10 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:new_name]
     end
 
-    if @order.save #成功したら
-      if @order.status == 0 #製造ステータスが未着手である
+    if @order.save 
+    #saveが成功したら
+      if @order.status == 0 
+      #製造ステータスが未着手である
         @cart_items.each do |cart_item|
           OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
         end
