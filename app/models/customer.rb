@@ -21,4 +21,8 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   # 会員はカートアイテムを沢山持っている
 
+
+  validates :post_code, presence: true, length: { maximum: 7 }
+  validates :address, presence: true
+  validates :name, presence: true
 end
