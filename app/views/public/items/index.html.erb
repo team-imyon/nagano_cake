@@ -12,9 +12,10 @@
     <% @items.each do |item| %>
 
       <div class="item-box">
-        <%= image_tag item.get_image(100,100) %>
+        <%= image_tag item.get_image(150,150) %>
 
-        <div class="list-comment">
+
+        <div class="item-comment">
           <span class="item-name">
             <%= link_to item_path(item.id) do %>
             <%= item.name %>

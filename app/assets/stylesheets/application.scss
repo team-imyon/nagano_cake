@@ -16,18 +16,19 @@
 
 .item-wrap {
   box-sizing: border-box;
-  width: 880px;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
 }
 
 .item-box {
-  width: 200px;
+  width: 20%;
   height: 250px;
   margin: 10px;
 }
 
 .item-comment {
+  // padding:
   width: 200px;
 }
