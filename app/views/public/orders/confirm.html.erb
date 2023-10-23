@@ -19,11 +19,11 @@
         <tr>
           <td>
             <%= image_tag cart_item.item.image, size: "100x80" %>
-            <strong><%= caet_item.item.name %></strong>
+            <strong><%= cart_item.item.name %></strong>
           </td>
-          <td><%= caet_item.item.price %></td>
+          <td><%= cart_item.item.price %></td>
           <td><%= cart_item.amount %></td>
-          <td><%= cart_item.item.price*caet_item.amount %></td>
+          <td><%= cart_item.item.price*cart_item.amount %></td>
         </tr>
         <% end %>
       </table>

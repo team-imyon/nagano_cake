@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!, only: [:new, :confirm, :create, :index, :show, :complete]
 
   def new
+
   end
 
   def confirm
@@ -17,7 +18,7 @@ class Public::OrdersController < ApplicationController
     ary = []
     # 商品の価格×数量＝金額(ary配列に追加)
     @cart_items.each do |cart_item|
-      ary << cart_item.item.price*cart_item.quantity
+      ary << cart_item.item.price*cart_item.amount
     end
      # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
     @cart_items_price = ary.sum
@@ -39,7 +40,7 @@ class Public::OrdersController < ApplicationController
       end
     when "new_address" #新しい住所を使用
       unless params[:order][:new_post_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-        @selested_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:prder][:new_name]
+        @selested_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
       else
         render :new #エラー時には新しいページへ
       end
@@ -51,7 +52,9 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     #現在ログインしているユーザーのID
     @order.customer_id = current_customer.id
-    @order.postage = 800 #固定送料
+    @order.payment_method = params[:order][:payment_method]
+    # フォームから支払い方法を取得
+    @postage = 800 #固定送料
     #カート内の全ての商品を取得
     @cart_items = CartItem.where(customer_id: current_customer.id)
     # 空の配列作成
@@ -59,12 +62,12 @@ class Public::OrdersController < ApplicationController
     ary = []
     # 商品の価格×数量＝金額(ary配列に追加)
       @cart_items.each do |cart_item|
-        ary << cart_item.item.price*cart_item.quantity
+        ary << cart_item.item.price*cart_item.amount
       end
       # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
       @cart_items_price = ary.sum
       #送料とカートアイテムの合計金額
-      @order.total_payment = @order.postage + @cart_items_price
+      @total_payment = @postage + @cart_items_price
       # ユーザーが選択した支払い方法を設定
       @order.payment_method = params[:order][:payment_method]
       if @order.payment_method == "credit_card"
@@ -110,7 +113,7 @@ class Public::OrdersController < ApplicationController
       redirect_to complete_orders_path
     else #注文処理失敗
       # 他のviewを表示しエラーメッセージを表示
-      render :items
+      render :new
     end
   end
 
