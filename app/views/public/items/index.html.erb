@@ -1,26 +1,25 @@
-
-<!--<div class="item-wrap">-->
+<h3>商品一覧</h3>
+  <div class="item-wrap">
   <!--#cssで定義したコンテンツを中央へ-->
-  
-<div class="container">
-  <div class="row">
-    <div class="col-auto">
-      <h3>商品一覧</h3>
-      
-        <% @items.each do |item| %>
-          <%= image_tag item.get_image(100,100) %>
-          <%= item.id %>
+    <% @items.each do |item| %>
+    
+      <div class="item-box">
+        <%= image_tag item.get_image(100,100) %>
+        
+        <div class="list-comment">
+          <span class="item-name">
             <%= link_to item_path(item.id) do %>
-              <%= item.name %>
+            <%= item.name %>
             <% end %>
-          <%= item.price %>
-      
-        <% end %>
-      
-      <div class="d-flex justify-content-center">
-        <%= paginate @items, theme: 'bootstrap-5' %>
+          </span>
+          <br>
+          <span class="item-praice">￥<%= item.price %></span>
+        </div>
+        
       </div>
+      
+    <% end %>
   </div>
- </div>
-
-</div>
+    <div class="d-flex justify-content-center">
+      <%= paginate @items, theme: 'bootstrap-5' %>
+    </div>
