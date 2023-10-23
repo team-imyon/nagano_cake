@@ -5,7 +5,6 @@
         注文情報確認
     </h5>
     <div class="col-md-12">
-      
       <table class="table">
         <tr>
           <td>商品名</td>
@@ -21,9 +20,9 @@
             <%= image_tag cart_item.item.image, size: "100x80" %>
             <strong><%= cart_item.item.name %></strong>
           </td>
-          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.item.with_tax_price %>円</td>
           <td><%= cart_item.amount %></td>
-          <td><%= cart_item.item.price*cart_item.amount %></td>
+          <td><%= cart_item.item.with_tax_price*cart_item.amount %>円</td>
         </tr>
         <% end %>
       </table>
@@ -32,29 +31,38 @@
       <table class="table">
         <tr>
           <td>送料</td>
-          <td><%= @postage %></td>
+          <td><%= @order.postage %>円</td>
         </tr>
 
         <tr>
           <td>商品合計</td>
-          <td><%= @caet_item_price %></td>
+          <td><%= @cart_items.sum { |cart_item| cart_item.subtotal } %>円</td>
         </tr>
 
         <tr>
           <td>請求額</td>
-          <td><%= @total_payment %></td>
+          <td><%= @order.total_payment %>円</td>
         </tr>
       </table>
 
-      <h4>支払い方法</h4>
+      <div class="row">
+        <h5 class="border d-flex justify-content-start my-5 px-3" >
+          支払い方法
+        </h5>
+      </div>
       <!--選択されたお支払い方法を表示-->
       <% if @selected_payment_method == "credit_card" %>
         クレジットカード
       <% else %>
         銀行振込
       <% end %>
+      
 
-      <h4>お届け先</h4>
+      <div class="row">
+        <h5 class="border d-flex justify-content-start my-5 px-3" >
+          お届け先
+        </h5>
+      </div>
       <!--@selected_addressに格納されたお届け先情報を表示-->
       <%= @selected_address %>
       <!--注文確定フォーム-->
@@ -75,11 +83,12 @@
           <%= hidden_field_tag 'order[new_address]', params[:order][:new_address] %>
           <%= hidden_field_tag 'order[new_name]', params[:order][:new_name] %>
         <% end %>
+        <br>
+        <br
         <!--注文確定ボタン-->
         <%= submit_tag "注文を確定する", class: "btn btn-success" %>
       <% end %>
 
     </div>
-
   </div>
 </div>
