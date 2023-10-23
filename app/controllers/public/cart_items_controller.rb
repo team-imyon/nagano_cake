@@ -5,28 +5,38 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    # 終わったらまたカートアイテムの画面いく！
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
+    flash[:notice] = "カートの数量を変更しました"
     redirect_to cart_items_path
 
   end
 
   def create
-    # カート内に商品データ追加
-    # データを入れるための箱作成
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.save
-    redirect_to cart_items_path
+    @cart_item.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
+      @cart_items.each do |cart_item|
+    # 同じ商品が既にカートにあるか確認、あれば既存の数量と新しい数量を足す
+        if cart_item.item_id == @cart_item.item_id
+        new_amount = cart_item.amount + @cart_item.amount
+        cart_item.update_attribute(:amount, new_amount)
+        @cart_item.delete
+        end
+      end
+      @cart_item.save
+      flash[:notice] = "カートに商品が入りました"
+      redirect_to cart_items_path
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    flash[:notice] = "カートの商品を削除しました"
     redirect_to cart_items_path
   end
 
-  def all_destroy
+  def destroy_all
     # 現在の顧客のカート内のすべての商品を取得
     cart_items = current_customer.cart_items
     # カート内のすべての商品を削除
