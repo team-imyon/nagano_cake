@@ -19,10 +19,6 @@ class Item < ApplicationRecord
       (price * 1.1).floor
   end
 
-  ## 小計を求めるメソッド
-  def subtotal
-      item.with_tax_price * amount
-  end
 
   def get_image(width, height)
     unless image.attached?
