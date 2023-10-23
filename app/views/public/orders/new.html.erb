@@ -6,10 +6,8 @@
       </h5>
 
     <div class="col-md-12">
-
-      <%= form_with model: Order.new, url: orders_path, method: :post do |f| %>
-
-      <h4>支払い方法</h4>
+      <%= form_with model: Order.new, url: orders_confirm_path, method: :post do |f| %>
+      <b>支払い方法</b><br>
       <!--ラジオボタンを使用-->
       <!--クレジットカードか銀行振込のどちらかを選択-->
       <%= f.radio_button :payment_method, :credit_card, checked: true %>
@@ -19,22 +17,23 @@
       <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], {value: :transfer} %>
 
       <div>
-        <h4>お届け先</h4>
+        <br>
+        <b>お届け先</b><br>
         <!--ラジオボタンにてお届け先の選択-->
         <%= f.radio_button :address_type, "customer_address", checked: true %>
-        <%= f.label :address_type, "ご自身の住所" %>
+        <%= f.label :address_type, "ご自身の住所" %><br>
         〒<%= current_customer.post_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name %>
       </div>
 
       <br>
       <%=f.radio_button :address_type, [:registered_address] %>
-      <%= f.label :address_type, "登録済住所から選択" %>
+      <%= f.label :address_type, "登録済住所" %>
       <!--登録済住所から選択の場合、ドロップダウンリストで表示-->
       <!--選択できるように登録済住所の一覧表示-->
       <!--current_member.addresses.allでログイン中のユーザーに紐づけられた全Addressデータを取得-->
       <!--mapメソッドで各Addressのデータをjoinメソッドで繋げる-->
       <!--m.idで各アドレスのidもパラメータとして送っている-->
-      <%= f.select :registered_address_id, current_customer.addresses.all.map { |m| [[m.post_code, m.address, m.name].join(" "), m.id] } ,include_blank: "登録してある配送先住所から選択" %>
+      <%= f.select :registered_address_id, current_customer.addresses.all.map { |m| [[m.post_code, m.address, m.name].join(" "), m.id] } ,include_blank: "選択" %>
       <br>
       <!--新しいお届け住所の登録-->
       <%= f.radio_button :address_type, "new_address" %>

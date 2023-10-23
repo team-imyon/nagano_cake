@@ -8,10 +8,12 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     # ryon
+    # 新しい注文オブジェクトを作成
+    @order = Order.new
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    @postage = 800  #送料800円で固定
+    @order.postage = 800  #送料800円で固定
     # フォームから送信された注文の支払い方法を受け取り
-    @payment_method = params[:order][:payment_method]
+    @selected_payment_method = params[:order][:payment_method]
     # 以下、商品合計額の計算
     # 空の配列作成
     # 各カートアイテムの価格と数量の金額を格納するのに使用
@@ -23,7 +25,7 @@ class Public::OrdersController < ApplicationController
      # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
     @cart_items_price = ary.sum
     # 支払い合計金額＝送料＋カート内商品の合計金額
-    @total_payment = @postage + @cart_items_price
+    @order.total_payment = @order.postage + @cart_items.sum { |cart_item| cart_item.subtotal }
     # フォームから送信された注文の配送先情報を受け取る
     @address_type = params[:order][:address_type]
     # ↑に基づいて異なる配送先情報を設定
@@ -46,15 +48,16 @@ class Public::OrdersController < ApplicationController
       end
     end
   end
-
+  
   def create
     #ryon
+    # byebug
     @order = Order.new
     #現在ログインしているユーザーのID
     @order.customer_id = current_customer.id
     @order.payment_method = params[:order][:payment_method]
     # フォームから支払い方法を取得
-    @postage = 800 #固定送料
+    @order.postage = 800 #固定送料
     #カート内の全ての商品を取得
     @cart_items = CartItem.where(customer_id: current_customer.id)
     # 空の配列作成
@@ -67,7 +70,7 @@ class Public::OrdersController < ApplicationController
       # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
       @cart_items_price = ary.sum
       #送料とカートアイテムの合計金額
-      @total_payment = @postage + @cart_items_price
+      @order.total_payment = @order.postage + @cart_items_price
       # ユーザーが選択した支払い方法を設定
       @order.payment_method = params[:order][:payment_method]
       if @order.payment_method == "credit_card"
@@ -110,7 +113,7 @@ class Public::OrdersController < ApplicationController
       # 注文処理後、カート内を全て削除
       @cart_items.destroy_all
       # 注文正常処理後、注文完了を知らせる
-      redirect_to complete_orders_path
+      redirect_to orders_complete_path
     else #注文処理失敗
       # 他のviewを表示しエラーメッセージを表示
       render :new
