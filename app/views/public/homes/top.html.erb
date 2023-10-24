@@ -1,35 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <%= image_tag "cake2.jpg", size: "980x300" %>
+　<div class="col-md-8 offset-md-1">
+    <div class="image-container mx-auto mb-5">
+      <%= image_tag 'cake.jpg', alt: 'Image', width: '90%', height: '30%' %>
+      <div class="main-text">
+        <div class="text-content">
+          <h4>ようこそ、ながのCAKEへ！</h4>
+          <p>このサイトは、ケーキ販売のECサイトになります。</p>
+          <p>会員でない方も商品の閲覧はできますが、</p>
+          <p>購入には会員登録が必要になります。</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-　
-　
-　 <div class="row">
-    <div class="col">
-      
-  <!--<div class="container">-->
-  <!--  <div class="row">-->
 
-  <!--  </div>-->
-  <!--  新着商品-->
-  <!--  <div class="row">-->
-  <!--   <div class="col-lg-3">-->
-  <!--     画像-->
-  <!--     商品名-->
-  <!--     価格-->
-  <!--   </div>-->
-  <!--   <div class="col-lg-3">-->
-  <!--  　ケーキ-->
-  <!--   </div>-->
-  <!--   <div class="col-lg-3">-->
-  <!--     ケーキ-->
-  <!--   </div>-->
-  <!--   <div class="col-lg-3">-->
-  <!--     ケーキ-->
-  <!--   </div>-->
-  <!--  </div>-->
+    <div class="row">
+      <div class="col">
+        <h3 class="border-bottom"><strong>新着商品</strong></h3>
+      </div>
+    </div>
 
-  <!--</div>-->
+<div class="row">
+      <div class="col mr-1">
+        <!--新着商品-->
+        <div class="new_items_container">
+         <% @items.each do |item| %>
+          <div class="new_items">
+            <div class="hover">
+              <span><%= link_to item_path(item) do %><%= image_tag item.get_image(150,150) %><% end %></span><br>
+              <span><%= link_to item.name, item_path(item), class:"link" %></span><br>
+              <span>￥<%= (item.price * 1.10).round %></span>
+            </div>
+          </div>
+         <% end %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="d-flex my-3 justify-content-end">
+       <%= link_to "すべての商品を見る＞＞", items_path, class: "link" %>
+     </div>

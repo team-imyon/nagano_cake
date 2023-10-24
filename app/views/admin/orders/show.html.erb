@@ -38,21 +38,17 @@
       <table class="table">
         <tr>
           <td>商品合計</td>
-
-          <td>
-            <%= @order_details.sum { |price| price.subtotal } %>
-          </td>
-
+          <td><%= @order_details.sum { |price| price.subtotal } %>円</td>
         </tr>
 
         <tr>
           <td>配送料</td>
-          <td><%= @order.postage %></td>
+          <td><%= @order.postage %>円</td>
         </tr>
 
         <tr>
           <td>ご請求額</td>
-          <td><%= @order.total_payment %></td>
+          <td><%= @order.total_payment %>円</td>
         </tr>
       </table>
 
@@ -70,11 +66,11 @@
             <!--商品名-->
             <td><%= order_detail.item.name %></td>
             <!--単価-->
-            <td><%= order_detail.price %></td>
+            <td><%= order_detail.item.with_tax_price %>円</td>
             <!--個数-->
             <td><%= order_detail.amount %></td>
             <!--小計-->
-            <td><%= order_detail.amount * order_detail.price %></td>
+            <td><%= order_detail.amount * order_detail.price %>円</td>
           </tr>
         <% end %>
       </table>

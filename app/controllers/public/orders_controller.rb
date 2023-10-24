@@ -20,12 +20,12 @@ class Public::OrdersController < ApplicationController
     ary = []
     # 商品の価格×数量＝金額(ary配列に追加)
     @cart_items.each do |cart_item|
-      ary << cart_item.item.price*cart_item.amount
+      ary << cart_item.item.with_tax_price*cart_item.amount
     end
      # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
     @cart_items_price = ary.sum
     # 支払い合計金額＝送料＋カート内商品の合計金額
-    @order.total_payment = @order.postage + @cart_items.sum { |cart_item| cart_item.subtotal }
+    @order.total_payment = @order.postage + @cart_items_price
     # フォームから送信された注文の配送先情報を受け取る
     @address_type = params[:order][:address_type]
     # ↑に基づいて異なる配送先情報を設定
@@ -65,7 +65,7 @@ class Public::OrdersController < ApplicationController
     ary = []
     # 商品の価格×数量＝金額(ary配列に追加)
       @cart_items.each do |cart_item|
-        ary << cart_item.item.with_tax_price * cart_item.amount
+      ary << cart_item.item.with_tax_price*cart_item.amount
       end
       # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
       @cart_items_price = ary.sum
@@ -79,8 +79,8 @@ class Public::OrdersController < ApplicationController
         @order.status = 1 #銀行振込
       end
 
-    address_type = params[:order][:address_type]
-    #address_typeに応じて異なる配送先情報を@oederに設定
+      address_type = params[:order][:address_type]
+      #address_typeに応じて異なる配送先情報を@oederに設定
     case address_type
     when "customer_address" #カスタマーの登録住所を@orderに設定
       @order.post_code = current_customer.post_code
@@ -99,6 +99,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:new_address]
       @order.name = params[:order][:new_name]
     end
+
 
     if @order.save
     #saveが成功したら
