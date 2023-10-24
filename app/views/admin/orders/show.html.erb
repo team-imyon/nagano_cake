@@ -38,9 +38,11 @@
       <table class="table">
         <tr>
           <td>商品合計</td>
+
           <td>
             <%= @order_details.sum { |price| price.subtotal } %>
           </td>
+
         </tr>
 
         <tr>
