@@ -54,7 +54,7 @@
                   <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-success m-2' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "注文履歴一覧", admin_orders_path, class: 'btn btn-success m-2' %>
+                  <%= link_to "注文履歴一覧", admin_path, class: 'btn btn-success m-2' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-success m-2' %>
@@ -92,7 +92,7 @@
 
     <main class="pb-5">
       <row class="d-flex justify-content-center mt-3">
-        <p class="notice alert-info" role="alert"><%= notice %></p>
+        <p class="notice alert-info px-3" role="alert"><%= notice %></p>
         <p class="arlet alert-danger" role="alert"><%= alert %></p>
       </row>
     <%= yield %>

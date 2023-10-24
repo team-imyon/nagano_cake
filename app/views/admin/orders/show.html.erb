@@ -38,7 +38,11 @@
       <table class="table">
         <tr>
           <td>商品合計</td>
-          <td>商品の合計を出したい</td>
+
+          <td>
+            <%= @order_details.sum { |price| price.subtotal } %>
+          </td>
+
         </tr>
 
         <tr>
@@ -66,11 +70,11 @@
             <!--商品名-->
             <td><%= order_detail.item.name %></td>
             <!--単価-->
-            <td><%= order_detail.item.price %></td>
+            <td><%= order_detail.price %></td>
             <!--個数-->
             <td><%= order_detail.amount %></td>
             <!--小計-->
-            <td><%= order_detail.amount * order_detail.item.price %></td>
+            <td><%= order_detail.amount * order_detail.price %></td>
           </tr>
         <% end %>
       </table>
