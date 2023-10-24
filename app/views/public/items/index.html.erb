@@ -1,11 +1,11 @@
-<div class="container">
+<!--<div class="container">-->
   <div class="row">
-    <div class="col mt-5" >
-      <h2 style="display: inline-block;">商品一覧</h2>
+    <div class="col mt-5 px-5" >
+      <h2 style="display: inline-block; font-weight: bold;">商品一覧</h2>
       <h4 style="display: inline-block;">(全<%= @all_items.count %>件)</h4>
     </div>
   </div>
-</div>
+<!--</div>-->
 
   <div class="item-wrap">
   <!--#cssで定義したコンテンツを中央へ-->
@@ -22,7 +22,7 @@
             <% end %>
           </span>
           <br>
-          <span class="item-praice">￥<%= item.price %></span>
+          <span class="item-price">￥<%= item.price %></span>
         </div>
 
       </div>
