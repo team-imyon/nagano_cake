@@ -7,7 +7,15 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'custom' %>
+    
+    <style>
+      .btn-lee {
+          color: #fff;
+          background-color: #96514d;
+          border-color: #96514d;
+      }
+    </style>
+
   </head>
 
   <body>
@@ -15,7 +23,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <div class="container">
           <div class="d-flex">
-            <a class="navbar-brand mr-auto text-light" href="/"><h2>ながのCAKE🍰</h2></a>
+            <a class="navbar-brand" href="/"><%= image_tag 'logo.png', :size =>'100x100' %></a>
             <% if customer_signed_in? %>
               <div class="nav-item text-light my-auto ml-4">
                 ようこそ、<%= current_customer.last_name %>さん！
@@ -103,7 +111,7 @@
       <div class="container">
         	<div class='row'>
           	<div class='mx-auto my-2'>
-          		<h5>ながのCAKE🍰</h5>
+          		<h5>NAGANO CAKE</h5>
           	</div>
           </div>
       </div>

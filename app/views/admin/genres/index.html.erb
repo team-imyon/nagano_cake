@@ -6,6 +6,8 @@
       </h5>
     </div>
     
+    <%= render'/layouts/errors', :[渡す値] %>
+    
     <div class="row">
     <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
       <div class="table table-borderless">
