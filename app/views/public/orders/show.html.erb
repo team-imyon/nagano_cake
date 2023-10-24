@@ -32,10 +32,10 @@
 
       <h5><b>請求情報</b></h5>
       <table class="table">
-        <% @order_details.each do |order_detail| %>
+
         <tr>
           <td>商品合計</td>
-          <td><%= order_detail.amount * order_detail.item.with_tax_price %>円</td>
+          <td><%= @order.total_payment - @order.postage %>円</td>
         </tr>
 
         <tr>
@@ -47,7 +47,7 @@
           <td>ご請求額</td>
           <td><%= @order.total_payment %>円</td>
         </tr>
-        <% end %>
+
       </table>
 
       <h5><b>注文内容</b></h5>
