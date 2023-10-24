@@ -16,17 +16,21 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     @cart_items = current_customer.cart_items.all
-      @cart_items.each do |cart_item|
+    if cart_item = @cart_items.find_by(item_id: @cart_item.item_id)
     # 同じ商品が既にカートにあるか確認、あれば既存の数量と新しい数量を足す
-        if cart_item.item_id == @cart_item.item_id
+      if cart_item.amount + @cart_item.amount > 50
+        flash[:notice] = "カートの数量は50以下でお願いします"
+        redirect_to cart_items_path
+      else
         new_amount = cart_item.amount + @cart_item.amount
         cart_item.update_attribute(:amount, new_amount)
         @cart_item.delete
-        end
       end
+    else
       @cart_item.save
       flash[:notice] = "カートに商品が入りました"
       redirect_to cart_items_path
+    end
   end
 
   def destroy
