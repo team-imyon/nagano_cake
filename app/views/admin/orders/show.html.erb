@@ -10,7 +10,7 @@
         
         <tr>
           <td>購入者</td>
-          <td><%= @order.customer.name %></td>
+          <td><%= @order.customer.full_name %></td>
         </tr>
 
         <tr>
@@ -38,7 +38,9 @@
       <table class="table">
         <tr>
           <td>商品合計</td>
-          <td><%= @order.total_price %></td>
+          <td>
+            <%= @order_details.sum { |price| price.subtotal } %>
+          </td>
         </tr>
 
         <tr>
@@ -61,16 +63,16 @@
           <td>小計</td>
         </tr>
         <!--注文詳細情報を反復処理-->
-        <%= @order_details.each do |order_detail| %>
+        <% @order_details.each do |order_detail| %>
           <tr>
             <!--商品名-->
             <td><%= order_detail.item.name %></td>
             <!--単価-->
-            <td><%= order_detail.item.price %></td>
+            <td><%= order_detail.price %></td>
             <!--個数-->
             <td><%= order_detail.amount %></td>
             <!--小計-->
-            <td><%= order_detail.amount * order_detail.item.price %></td>
+            <td><%= order_detail.amount * order_detail.price %></td>
           </tr>
         <% end %>
       </table>

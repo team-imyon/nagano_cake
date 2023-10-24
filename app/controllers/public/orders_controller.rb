@@ -65,7 +65,7 @@ class Public::OrdersController < ApplicationController
     ary = []
     # 商品の価格×数量＝金額(ary配列に追加)
       @cart_items.each do |cart_item|
-        ary << cart_item.item.price*cart_item.amount
+        ary << cart_item.item.with_tax_price * cart_item.amount
       end
       # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
       @cart_items_price = ary.sum

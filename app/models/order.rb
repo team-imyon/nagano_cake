@@ -11,5 +11,4 @@ has_many :order_details, dependent: :destroy
 belongs_to :customer
 # 注文情報が繋がっているモデルはcustomerのみ
 
-
 end

@@ -10,6 +10,10 @@ module NaganoCake
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    
+    class Application < Rails::Application
+      config.time_zone = 'Tokyo'
+    end
     # ryon
     # 日本語化
     config.i18n.default_locale = :ja
