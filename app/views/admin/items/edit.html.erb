@@ -4,6 +4,8 @@
     <div class="col">
       <h2>商品編集</h2>
 
+      <%= render "layouts/errors", obj: @item %>
+
  　　   <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
       <table class="table table-borderless">
 

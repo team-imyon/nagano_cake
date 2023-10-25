@@ -4,6 +4,8 @@
     <div class="col">
       <h2>商品新規登録</h2>
 
+      <%= render "layouts/errors", obj: @item %>
+
  　　   <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
       <table class="table table-borderless">
 
