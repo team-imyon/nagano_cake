@@ -3,7 +3,7 @@
     <div class="row">
       <h5 class="border d-flex justify-content-start my-5 px-3" >ジャンル編集</h5>
     </div>
-
+  <%= render "layouts/errors", obj: @genre %>
   <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
     <tr>
       <td><%= f.label :"ジャンル名", class: "mr-3" %></td>

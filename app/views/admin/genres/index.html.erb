@@ -4,10 +4,10 @@
       <h5 class="border d-flex justify-content-start my-5 px-3" >
         ジャンル一覧・追加
       </h5>
-    </div>
+    </div
     
-    <%= render'/layouts/errors', :[渡す値] %>
-    
+    <%= render "layouts/errors", obj: @genre %>
+        
     <div class="row">
     <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
       <div class="table table-borderless">
