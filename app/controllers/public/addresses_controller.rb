@@ -9,6 +9,7 @@ class Public::AddressesController < ApplicationController
     @naddress = Address.new(address_params)
     @naddress.customer_id = current_customer.id
     if @naddress.save
+      flash[:notice] = "登録が完了いたしました"
       redirect_to addresses_path
     else
       @customer = current_customer
@@ -23,8 +24,9 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
-    address = Address.find(params[:id])
-    if address.update(address_params)
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      flash[:notice] = "変更が完了いたしました"
       redirect_to addresses_path
     else
       @address = Address.find(params[:id])
@@ -35,6 +37,7 @@ class Public::AddressesController < ApplicationController
   def destroy
     address = Address.find(params[:id])
     address.destroy
+      flash[:notice] = "削除が完了いたしました"
     redirect_to addresses_path
   end
   

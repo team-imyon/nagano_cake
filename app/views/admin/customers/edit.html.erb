@@ -1,9 +1,9 @@
-<h1>管理者が顧客編集するところ！！</h1>
 <div class="container">
   <div class="row">
     <div class="col">
       <h4 class="my-5">会員情報編集</h4>
       <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+      <%= render "layouts/errors", obj: @customer %>
       <table class="table table-borderless">
           <tr>
             <td>会員ID</td>
