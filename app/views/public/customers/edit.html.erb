@@ -5,6 +5,8 @@
       <h4 class="my-5">会員情報編集</h4>
     </div>
   </div>
+  <%= render "layouts/errors", obj: @customer %>
+
   <div class="row d-flex justify-content-center">
       <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
       <table class="table table-borderless">
