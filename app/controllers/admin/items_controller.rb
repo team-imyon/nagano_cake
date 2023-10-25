@@ -14,9 +14,9 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:notice] = "登録が完了いたしました"
       redirect_to admin_item_path(@item)
     else
-      @item = Item.new
       render :new
     end
   end
@@ -26,11 +26,11 @@ class Admin::ItemsController < ApplicationController
   end
     
   def update
-    item = Item.find(params[:id])
-    if item.update(item_params)
-      redirect_to admin_item_path(item.id)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "変更が完了いたしました"
+      redirect_to admin_item_path(@item.id)
     else
-      @item = Item.find(params[:id])
       render :edit
     end
   end

@@ -16,20 +16,25 @@
         </tr>
         <tr>
           <td>
-            <% if customer_signed_in? %>
-              <p class="text-success">
-                <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-                  <%= f.hidden_field :customer_id, :value => current_customer.id %>
-                  <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= f.select :amount, *[1..50] , prompt: "個数選択" %>
-                  <%= f.submit "カートに入れる", class: "btn btn-primary" %>
-                <% end %>
-              </p>
-            <% else %>
-              <p class="text-secondary">
-                <%= link_to "購入にはログインが必要です", new_customer_session_path, class: "btn btn-info" %>
-              </p>
+            <% if @item.is_active %>
+              <% if customer_signed_in? %>
+                <p class="text-success">
+                  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+                    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                    <%= f.select :amount, *[1..50] , prompt: "個数選択" %>
+                    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p class="text-secondary">
+                  <%= link_to "購入にはログインが必要です", new_customer_session_path, class: "btn btn-info" %>
+                </p>
+              <% end %>
+            <% elsif %>
+             <p class="btn btn-outline-danger">売り切れ</p>
             <% end %>
+
           </td>
         </tr>
       </table>

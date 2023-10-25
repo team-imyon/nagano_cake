@@ -14,7 +14,6 @@ class Public::AddressesController < ApplicationController
     else
       @customer = current_customer
       @address = @customer.addresses
-      @naddress = Address.new
       render :index
     end
   end
@@ -29,7 +28,6 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = "変更が完了いたしました"
       redirect_to addresses_path
     else
-      @address = Address.find(params[:id])
       render :edit
     end
   end
