@@ -1,10 +1,11 @@
   <!--ryon-->
   <div class="container">
     <div class="row">
-      <h5 class="border d-flex justify-content-start my-5 px-3" >
+      <h5 class="border d-flex justify-content-start my-5 px-3">
         ジャンル一覧・追加
       </h5>
     </div>
+
     <%= render "layouts/errors", obj: @genre %>
     <div class="row">
     <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
