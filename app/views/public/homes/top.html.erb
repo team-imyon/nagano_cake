@@ -33,6 +33,11 @@
               <span><%= link_to item_path(item) do %><%= image_tag item.get_image(150,150) %><% end %></span><br>
               <span><%= link_to item.name, item_path(item), class:"link" %></span><br>
               <span>￥<%= (item.price * 1.10).round %></span>
+                <% if item.is_active %>
+                  <p></p>
+                <% elsif %>
+               <p class="text-danger"><strong>売り切れ</strong></p>
+                <% end %>
             </div>
           </div>
          <% end %>
