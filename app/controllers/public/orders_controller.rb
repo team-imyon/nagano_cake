@@ -3,7 +3,7 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!, only: [:new, :confirm, :create, :index, :show, :complete]
 
   def new
-
+    @order = Order.new
   end
 
   def confirm
@@ -51,8 +51,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     #ryon
-    # byebug
-    @order = Order.new
+    @order = Order.new(order_params)
     #現在ログインしているユーザーのID
     @order.customer_id = current_customer.id
     @order.payment_method = params[:order][:payment_method]
