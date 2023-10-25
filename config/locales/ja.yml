@@ -7,6 +7,7 @@ ja: #日本語の設定
         # 要素の数だけ追加
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+          
         status: #カラム名
           waiting: "入金待ち"
           confirmation: "入金確認"
