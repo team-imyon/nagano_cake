@@ -5,9 +5,8 @@
         ジャンル一覧・追加
       </h5>
     </div>
-    
+
     <%= render "layouts/errors", obj: @genre %>
-        
     <div class="row">
     <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
       <div class="table table-borderless">

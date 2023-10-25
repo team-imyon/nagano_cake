@@ -12,13 +12,13 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     # ↑のデータベースを保存
     if @genre.save
+      flash[:notice] = "登録が完了いたしました"
     # 正常に保存されたら管理者ジャンル一覧にリダイレクト
       redirect_to admin_genres_path
     else
     # エラーの場合ジャンル一覧に戻る
       @genres = Genre.all
-      redirect_to admin_genres_path
-      
+      render :index
     end
   end
 
@@ -32,6 +32,7 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     # データベース内のジャンル情報を更新
     if @genre.update(genre_params)
+      flash[:notice] = "変更が完了いたしました"
     # ジャンルの変更後一覧画面にリダイレクト
       redirect_to admin_genres_path
     else
