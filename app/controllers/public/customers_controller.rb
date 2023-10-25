@@ -11,6 +11,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
+      flash[:notice] = "変更が完了いたしました"
       redirect_to customers_my_page_path
     else
       @customer = current_customer

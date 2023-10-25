@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false">
-    <div class="alert alert-danger" role="alert">
+  <div class="row d-flex justify-content-start">
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <ul>
         <% obj.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -8,6 +8,7 @@
       </ul>
     </div>
   </div>
+
 <% end %>
 
-<!--%= render "layouts/errors", obj: @book %>-->
+  <!--%= render "layouts/errors", obj: @customer %>-->
