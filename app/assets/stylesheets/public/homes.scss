@@ -1,3 +1,36 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+ .image-container {
+  position: relative; /* 相対位置指定 */
+  text-align: center; /* テキストを中央揃え */
+}
+
+.main-text {
+  position: absolute; /* 絶対位置指定 */
+  top: 50%; /* 上端を中央に配置 */
+  left: 50%; /* 左端を中央に配置 */
+  transform: translate(-50%, -50%); /* 中央揃え */
+  background-color: rgba(255, 255, 255, 0.7); /* 背景色*/
+  padding: 15px; /* テキスト周りの余白 */
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 15px;
+  color: #333333;
+}
+
+h3{ 
+  font-family: "Sawarabi Mincho"; 
+}
+
+
+.new_items_container {
+  display: flex; /* Flexbox を使用して子要素を横に並べる */
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 20px; /* 商品間の間隔を設定 */
+  font-family: "Sawarabi Mincho";
+}
+
+.all_items{ 
+  font-family: "Sawarabi Mincho"; 
+}

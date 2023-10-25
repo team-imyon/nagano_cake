@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
-　<div class="col-md-8 offset-md-1">
-    <div class="image-container mx-auto mb-5">
-      <%= image_tag 'cake.jpg', alt: 'Image', width: '90%', height: '30%' %>
+　<div class="col">
+    <div class="image-container mb-4">
+      <%= image_tag 'cake.jpg', alt: 'Image', width: '100%', height: '400px' %>
       <div class="main-text">
         <div class="text-content">
           <h4>ようこそ、ながのCAKEへ！</h4>
-          <p>このサイトは、ケーキ販売のECサイトになります。</p>
+          <p>このサイトは、ケーキ販売の</p>
+          <p>ECサイトになります。</p>
           <p>会員でない方も商品の閲覧はできますが、</p>
           <p>購入には会員登録が必要になります。</p>
         </div>
@@ -17,7 +18,8 @@
 
     <div class="row">
       <div class="col">
-        <h3 class="border-bottom"><strong>新着商品</strong></h3>
+        <h3 class="border-bottom">
+          <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">新着商品</h3>
       </div>
     </div>
 
@@ -37,7 +39,13 @@
         </div>
       </div>
     </div>
-    
-    <div class="d-flex my-3 justify-content-end">
-       <%= link_to "すべての商品を見る＞＞", items_path, class: "link" %>
-     </div>
+  
+  <div class="row">
+    <div class="col">
+      <div class="all_items">
+       <div class="d-flex my-3 justify-content-end align-self-end">
+        <%= link_to "すべての商品を見る＞＞", items_path, class: "link" %>
+        </div>
+      </div>
+    </div>
+  </div>
