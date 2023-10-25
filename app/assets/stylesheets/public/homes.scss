@@ -13,13 +13,8 @@
   transform: translate(-50%, -50%); /* 中央揃え */
   background-color: rgba(255, 255, 255, 0.7); /* 背景色*/
   padding: 15px; /* テキスト周りの余白 */
-  font-family: 'Sawarabi Mincho', serif;
   font-size: 15px;
   color: #333333;
-}
-
-h3{ 
-  font-family: "Sawarabi Mincho"; 
 }
 
 
@@ -28,9 +23,5 @@ h3{
   flex-direction: row;
   justify-content: space-around;
   gap: 20px; /* 商品間の間隔を設定 */
-  font-family: "Sawarabi Mincho";
 }
 
-.all_items{ 
-  font-family: "Sawarabi Mincho"; 
-}

@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
 
-#payment_methodへenumを定義.  # enum order_status: { "入金待ち":0, "入金確認":1, "製造中":2, "発送準備中":3, "発送済":4 }
+#payment_methodへenumを定義
 
-enum payment_method: { credit_card: 0, transfer: 1 }, status: { waiting: 0, confirmation: 1,　production: 2, preparing: 3, shipped: 4 }
+enum payment_method: { credit_card: 0, transfer: 1 },status: { waiting: 0, confirmation: 1,　production: 2, preparing: 3, shipped: 4 }
 
 has_many :order_details, dependent: :destroy
 # 注文情報は注文商品を沢山持っている
@@ -10,7 +10,5 @@ has_many :order_details, dependent: :destroy
 
 belongs_to :customer
 # 注文情報が繋がっているモデルはcustomerのみ
-
-
 
 end

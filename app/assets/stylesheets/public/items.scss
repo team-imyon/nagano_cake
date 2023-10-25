@@ -1,3 +1,21 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.item-wrap {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+
+.item-box {
+  width: 23%;
+  height: 250px;
+  margin: 10px;
+}
+
+.item-comment {
+  width: 200px;
+}
