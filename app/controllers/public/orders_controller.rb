@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
       end
     when "new_address" #新しい住所を使用
       unless params[:order][:new_post_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-        @selested_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
+        @selected_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
       else
         render :new #エラー時には新しいページへ
       end
@@ -72,11 +72,12 @@ class Public::OrdersController < ApplicationController
       @order.total_payment = @order.postage + @cart_items_price
       # ユーザーが選択した支払い方法を設定
       @order.payment_method = params[:order][:payment_method]
-      if @order.payment_method == "credit_card"
-        @order.status = 0 #クレジットカード
-      else
-        @order.status = 1 #銀行振込
-      end
+      # if @order.payment_method == "credit_card"
+      #   @order.status = 0 #クレジットカード
+      # else
+      #   @order.status = 1 #銀行振込
+      # end
+      # →newアクションで入力済みの為再度記述しなくてだいじょうぶ
 
       address_type = params[:order][:address_type]
       #address_typeに応じて異なる配送先情報を@oederに設定
@@ -88,7 +89,7 @@ class Public::OrdersController < ApplicationController
     #フォームから送信されたregistered_address_idを使用し、登録済み住所情報をselectedに取得し、@orderに設定
     when "registered_address"
       Address.find(params[:order][:registered_address_id])
-      selected = Address.find(params[:order][:registered_address_id])
+       selected = Address.find(params[:order][:registered_address_id])
       @order.post_code = selected.post_code
       @order.address = selected.address
       @order.name = selected.name
@@ -98,19 +99,20 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:new_address]
       @order.name = params[:order][:new_name]
     end
+    
 
     if @order.save
     #saveが成功したら
-      if @order.status == 0
-      #製造ステータスが未着手である
+      # if @order.status == 0
+      # #製造ステータスが未着手である
         @cart_items.each do |cart_item|
           OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
         end
-      else #０以外の場合→製造開始である
-        @cart_items.each do |cart_item|
-          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 1)
-        end
-      end
+      # else #０以外の場合→製造開始である
+        # @cart_items.each do |cart_item|
+        #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 1)
+        # end
+      # end
       # 注文処理後、カート内を全て削除
       @cart_items.destroy_all
       # 注文正常処理後、注文完了を知らせる
