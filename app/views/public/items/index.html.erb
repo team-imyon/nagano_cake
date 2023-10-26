@@ -3,15 +3,16 @@
       <h4 style="display: inline-block; font-weight: bold;">商品一覧</h4>
       <h5 style="display: inline-block;">(全<%= @all_items.count %>件)</h5>
     </div>
-
+  
   <div class="item-wrap">
   <!--#cssで定義したコンテンツを中央へ-->
     <% @items.each do |item| %>
-
+      
       <div class="item-box">
         <%= link_to item_path(item) do %>
           <%= image_tag item.get_image(180,150) %>
         <% end %>
+
         <div class="item-comment">
           <span class="item-name">
             <%= link_to item_path(item.id) do %>
@@ -27,12 +28,10 @@
             <% end %>
         </div>
       </div>
-
     <% end %>
+  
+  
   </div>
     <div class="d-flex justify-content-center">
       <%= paginate @items, theme: 'bootstrap-5' %>
     </div>
-
-<!--</div>    -->
-
