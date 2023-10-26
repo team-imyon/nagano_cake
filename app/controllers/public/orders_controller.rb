@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     #ryon
-    @order = Order.new(order_params)
+    @order = Order.new
     #現在ログインしているユーザーのID
     @order.customer_id = current_customer.id
     @order.payment_method = params[:order][:payment_method]

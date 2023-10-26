@@ -13,44 +13,18 @@
  *= require_tree .
  *= require_self
  */
-head{ 
+header{ 
   font-family: "Sawarabi Mincho"; 
 }
 
 main{ 
   font-family: "Sawarabi Mincho"; 
 }
+
 .text-content {
-  position: absolute; /* 絶対位置指定 */
-  top: 50%; /* 上端を中央に配置 */
-  left: 50%; /* 左端を中央に配置 */
-  transform: translate(-50%, -50%); /* 中央揃え */
-  background-color: rgba(255, 255, 255, 0.7); /* 背景色*/
-  padding: 15px; /* テキスト周りの余白 */
-  font-size: 15px;
-  color: #333333;
-}
-// .text-content {
-//   text-align: center; /* テキストを中央揃え */
-// }
-
-.item-wrap {
-  box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: auto;
+  text-align: center; /* テキストを中央揃え */
 }
 
-.item-box {
-  width: 23%;
-  height: 250px;
-  margin: 10px;
-}
-
-.item-comment {
-  width: 200px;
-}
 
 .field_with_errors {
   display: contents;
