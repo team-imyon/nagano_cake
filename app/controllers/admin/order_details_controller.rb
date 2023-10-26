@@ -19,6 +19,7 @@ class Admin::OrderDetailsController < ApplicationController
     end
     redirect_to admin_order_path(@order)
   end
+
     # is_updated = true
     #   if @order_detail.update(order_detail_params)
     #     @order.update(status: "production") if @order_detail.making_status == "production"
@@ -50,5 +51,6 @@ private
   def order_params
     params.permit(:status)
   end
+
   
 end

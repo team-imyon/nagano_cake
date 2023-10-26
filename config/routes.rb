@@ -9,13 +9,11 @@ Rails.application.routes.draw do
 
   #ユーザーごとのカスタマイズを表示
   scope module: :public do
-    resources :customers, only: [:edit, :update]
     #"表示URL"=>"controller#action" で表示ページを記載
     get "customers/my_page" => "customers#show"
     get 'customers/quit' => "customers#quit"
     patch 'customers/withdraw' => 'customers#withdraw'
-    get  '/customers/quit' => 'customers#quit'
-    patch  '/customers/withdraw' => 'customers#withdraw'
+    resources :customers, only: [:edit, :update]
   end
 
 
