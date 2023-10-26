@@ -18,4 +18,11 @@ class Admin::OrderDetailsController < ApplicationController
       end
         redirect_to admin_order_path(@order)
   end
+  
+  private
+  def order_detail_params
+    params.require(:order_detail).permit(:making_status)
+  end    
+  
+  
 end
