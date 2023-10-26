@@ -25,6 +25,10 @@ before_action :customer_state, only: [:create]
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
   
 protected
 # 退会しているかを判断するメソッド
@@ -42,4 +46,5 @@ protected
     end
 
   end
+
 end

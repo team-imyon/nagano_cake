@@ -6,23 +6,51 @@ class Admin::OrderDetailsController < ApplicationController
     @order_details = @order.order_details.all
     @order_detail.update(order_detail_params)
     
-    is_updated = true
-      if @order_detail.update(order_detail_params)
-        @order.update(status: "製造中") if @order_detail.making_status == "製造中"
+    if @order_detail.making_status == "completed"
+      @order_detail.update(order_detail_params)
         @order_details.each do |order_detail|
-          if order_detail.making_status != "製造完了"
-            is_updated = false
-          end
+        if order_detail.making_status = "production"
+          redirect_to admin_order_path(@order)
+        else
+          @order.status = 3
+          @order.update(order_params)
         end
-        @order.update(status: "発送準備中") if is_updated
       end
-        redirect_to admin_order_path(@order)
+    end
+    redirect_to admin_order_path(@order)
   end
+
+    # is_updated = true
+    #   if @order_detail.update(order_detail_params)
+    #     @order.update(status: "production") if @order_detail.making_status == "production"
+    #     @order_details.each do |order_detail|
+    #       if order_detail.making_status != "completed"
+    #         is_updated = false
+    #       end
+    #     end
+    #     @order.update(status: "preparing") if is_updated
+    #   end
+    # redirect_to admin_order_path(@order)
+  # end
+    # @order.update(order_params)
+    # if @order.status == "confirmation"
+    #   @order_details.each do |order_detail|
+    #     order_detail.making_status = 1
+    #     order_detail.update(order_detail_params)
+    #   end
+    # end
+    #   redirect_to admin_order_path(@order)
+    
+
   
-  private
-  def order_detail_params
-    params.require(:order_detail).permit(:making_status)
-  end    
-  
+private
+ def order_detail_params
+  params.require(:order_detail).permit(:making_status)
+ end 
+ 
+  def order_params
+    params.permit(:status)
+  end
+
   
 end
