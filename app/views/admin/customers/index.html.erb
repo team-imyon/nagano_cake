@@ -23,10 +23,10 @@
           <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
           <td><%= customer.email %></td>
           <td>
-            <% if customer.is_active %>
-              <p class="text-success">有効</p>
-            <% else %>
+            <% if customer.is_deleted %>
               <p class="text-secondary">退会</p>
+            <% else %>
+              <p class="text-success">有効</p>
             <% end %>
           </td>
         </tr>

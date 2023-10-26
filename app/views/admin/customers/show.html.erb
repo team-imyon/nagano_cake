@@ -44,10 +44,10 @@
         <tr>
           <td class="bd-light">会員ステータス</td>
           <td>
-            <% if @customer.is_active %>
-              <p class="text-success">有効</p>
-            <% else %>
+            <% if @customer.is_deleted %>
               <p class="text-secondary">退会</p>
+            <% else %>
+              <p class="text-success">有効</p>
             <% end %>
           </td>
         </tr>
