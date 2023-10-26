@@ -1,7 +1,7 @@
-
-    <div class="mt-5 px-5" >
-      <h2 style="display: inline-block; font-weight: bold;">商品一覧</h2>
-      <h4 style="display: inline-block;">(全<%= @all_items.count %>件)</h4>
+<div class="container">
+    <div class="mt-2 px-5" >
+      <h4 style="display: inline-block; font-weight: bold;">商品一覧</h4>
+      <h5 style="display: inline-block;">(全<%= @all_items.count %>件)</h5>
     </div>
 
   <div class="item-wrap">
@@ -9,8 +9,9 @@
     <% @items.each do |item| %>
 
       <div class="item-box">
-        <%= image_tag item.get_image(180,150) %>
-
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.get_image(180,150) %>
+        <% end %>
 
         <div class="item-comment">
           <span class="item-name">
@@ -26,7 +27,6 @@
            <p class="text-danger"><strong>売り切れ</strong></p>
             <% end %>
         </div>
-
       </div>
 
     <% end %>
@@ -34,3 +34,4 @@
     <div class="d-flex justify-content-center">
       <%= paginate @items, theme: 'bootstrap-5' %>
     </div>
+</div>    
