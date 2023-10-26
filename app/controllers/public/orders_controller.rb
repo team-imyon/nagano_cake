@@ -99,7 +99,6 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:new_name]
     end
 
-
     if @order.save
     #saveが成功したら
       if @order.status == 0
