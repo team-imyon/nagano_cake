@@ -12,7 +12,7 @@
         <%= link_to item_path(item) do %>
           <%= image_tag item.get_image(180,150) %>
         <% end %>
-        
+
         <div class="item-comment">
           <span class="item-name">
             <%= link_to item_path(item.id) do %>
@@ -35,4 +35,3 @@
     <div class="d-flex justify-content-center">
       <%= paginate @items, theme: 'bootstrap-5' %>
     </div>
-<!--</div>    -->
