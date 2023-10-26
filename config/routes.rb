@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   end
 
   get "/admin/orders/history/:id", to: "admin/orders#index", as: "history"
- 
+
   namespace :admin do
     resources :order_details, only: [:update]
   end

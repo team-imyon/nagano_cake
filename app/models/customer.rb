@@ -2,10 +2,6 @@ class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
-  # def active_for_authentication?
-  #   super && (is_deleted == true)
-  # end
-  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -35,5 +31,17 @@ class Customer < ApplicationRecord
   validates :post_code, presence: true, length: { is: 7 }
   validates :address, presence: true
   validates :tel_number, presence: true, length: { maximum: 13 }
-
+  
+  # def is_active
+  #   if is_deleted == true
+  #     "退会"
+  #   else
+  #     "有効"
+  #   end
+  # end
+  
+  # def active_for_authentication?
+  #   super && (is_deleted == true)
+  # end
+  
 end
