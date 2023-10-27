@@ -102,9 +102,13 @@
     </header>
 
     <main class="pb-5">
-      <row class="d-flex justify-content-center mt-3">
+      <row>
+      <div class="d-flex justify-content-center mt-3">
         <p class="notice alert-info px-3" role="alert"><%= notice %></p>
-        <p class="arlet alert-danger" role="alert"><%= alert %></p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p class="arlet alert-danger px-3" role="alert"><%= alert %></p>
+      </div>
       </row>
     <%= yield %>
     </main>
