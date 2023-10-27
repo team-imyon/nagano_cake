@@ -20,12 +20,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def quit
+    @customer= Customer.find(params[:id])
   end
 
   def withdraw
     @customer = Customer.find(current_customer.id)
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-    @customer.update(is_deleted: true)
+    @customer.update(is_active: "Invalid")
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
@@ -36,5 +37,4 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :furigana_last_name, :furigana_first_name, :post_code, :address, :tel_number, :email )
   end  
-  
 end

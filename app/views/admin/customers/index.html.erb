@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <h5 class="border d-flex justify-content-start my-5 px-3">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
       会員一覧
     </h5>
   </div>
@@ -23,10 +23,11 @@
           <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
           <td><%= customer.email %></td>
           <td>
-            <% if customer.is_deleted %>
-              <p class="text-secondary">退会</p>
-            <% else %>
+            <% if customer.is_active %>
               <p class="text-success">有効</p>
+            <% else %>
+            <p class="text-secondary">退会</p>
+              
             <% end %>
           </td>
         </tr>
