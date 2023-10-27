@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
 
+
   namespace :admin do
     resources :order_details, only: [:update]
   end

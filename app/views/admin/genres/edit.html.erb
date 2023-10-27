@@ -1,13 +1,16 @@
 <!--ryon-->
   <div class="container">
-    <div class="row">
-      <h5 class="border d-flex justify-content-start my-5 px-3" >ジャンル編集</h5>
+    <div class="row d-flex justify-content-center">
+      <h5 class="border p-3 my-3">
+        ジャンル編集
+      </h5>
     </div>
-    <div class="row">
+    <br>
+    <div class="row d-flex justify-content-center">
       <%= render "layouts/errors", obj: @genre %>
     </div>
 
-    <div class="row">
+    <div class="row d-flex justify-content-center">
       <div>
         <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
           <tr>
