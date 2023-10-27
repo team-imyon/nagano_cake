@@ -28,7 +28,7 @@ class Customer < ApplicationRecord
   validates :furigana_last_name, presence: true
   validates :furigana_first_name, presence: true
   validates :address, presence: true
-  validates :post_code, presence: true, length: { is: 6 }
+  validates :post_code, presence: true, length: { is: 7 }
   validates :address, presence: true
   validates :tel_number, presence: true, length: { maximum: 13 }
 

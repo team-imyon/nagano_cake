@@ -14,27 +14,27 @@
         
         <tr>
           <td>商品画像</td>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
+          <td><%= f.file_field :image, accept: "image/*", class: "rounded" %></td>
         </tr>
 
         <tr>
           <td>商品名</td>
-          <td><%= f.text_field :name, style: "width:60%", placeholder: "商品名" %></td>
+          <td><%= f.text_field :name, style: "width:60%", placeholder: "商品名", class: "rounded" %></td>
         </tr>
 
         <tr>
           <td>商品説明</td>
-          <td><%= f.text_area :explanation, style: "width:60%", rows: "5", placeholder: "ここに説明文を記述します" %></td>
+          <td><%= f.text_area :explanation, style: "width:60%", rows: "5", placeholder: "ここに説明文を記述します", class: "rounded" %></td>
         </tr>
 
         <tr>
           <td>ジャンル</td>
-          <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></td>
+          <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "rounded" %></td>
         </tr>
 
         <tr>
           <td>税抜価格</td>
-          <td><%= f.text_field :price, placeholder: "1000" %>円</td>
+          <td><%= f.text_field :price, placeholder: "1000", class: "rounded" %>円</td>
         </tr>
 
         <tr>
