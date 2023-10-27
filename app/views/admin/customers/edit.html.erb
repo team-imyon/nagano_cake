@@ -1,10 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h4 class="my-3">会員情報編集</h4>
-    </div>
+  <div class="row d-flex justify-content-center">
+      <h5 class="border p-3 my-3">
+        会員情報編集
+      </h5>
   </div>
   <%= render "layouts/errors", obj: @customer %>
+  
   <div class="row d-flex justify-content-center">
     <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
       <table class="table table-borderless">
@@ -60,12 +61,14 @@
             <%= f.label :is_active, "退会", { value: :false } %>
           </td>
         </tr>
-
+      </table>
+    
+      <div class="row d-flex justify-content-center">
         <tr>
           <td></td>
           <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
         </tr>
-      </table>
+      </div>
     <% end %>
   </div>
 </div>

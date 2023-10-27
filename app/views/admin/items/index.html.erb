@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="col-auto border d-flex justify-content-start my-5 px-3">
-    <h5>
+  <div class="row d-flex justify-content-center">
+    <div>
+    <h5 class="border p-3 my-3">
       商品一覧
     </h5>
     </div>
 
-    <div class="col-auto text-right my-5">
+    <div class="col-auto text-right p-3 my-3">
       <button type="button" class="btn btn-outline-secondary btn-light rounded-circle p-0" style="width:2rem;height:2rem;">
         <%= link_to "＋", new_admin_item_path, class:"text-secondary"%>
       </button>
@@ -28,7 +28,7 @@
       <tr>
         <td><%= i.id %></td>
         <td><%= link_to i.name, admin_item_path(i.id) %></td>
-        <td><%= i.price %>円</td>
+        <td><%= i.price %></td>
         <td><%= i.genre.name %></td>
         <td>
           <% if i.is_active %>
