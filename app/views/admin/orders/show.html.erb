@@ -40,7 +40,7 @@
           </td>
         </tr>
       </table>
-
+      
       <h6><b>注文内容</b></h6>
       <table class="table">
         <tr>
@@ -72,20 +72,20 @@
         <% end %>
       </table>
       
-      <table class="table">
+      <table valign="top">
         <tr>
-          <td><b>商品合計</b></td>
-          <td><%= @order.total_payment - @order.postage %>円</td>
+          <th><b>商品合計</b></th>
+          <th><%= @order.total_payment - @order.postage %>円</th>
         </tr>
-
+        <br>
         <tr>
-          <td><b>送料</b></td>
-          <td><%= @order.postage %>円</td>
+          <th><b>送料</b></th>
+          <th><%= @order.postage %>円</th>
         </tr>
-
+        <br>
         <tr>
-          <td><b>請求金額合計</b></td>
-          <td><%= @order.total_payment %>円</td>
+          <th><b>請求金額合計</b></th>
+          <th><%= @order.total_payment %>円</th>
         </tr>
       </table>
     </div>
