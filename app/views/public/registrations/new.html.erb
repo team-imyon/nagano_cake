@@ -1,15 +1,14 @@
 <div class="container">
-  <div class="row my-3">
-    <div class="offset-1 border my-3 px-3">
+  <div class="row">
+    <div class="border d-flex justify-content-start my-3 px-3">
       <h5>新規会員登録</h5>
     </div>
   </div>
 
-
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="row">
+<div>
+  <div class="row d-flex justify-content-center">
     <div class="col-2">
       名前
     </div>
@@ -28,7 +27,7 @@
   </div>
 
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-2">
       フリガナ
     </div>
@@ -46,7 +45,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-3">
       <%= f.label :email, "メールアドレス" %>
     </div>
@@ -55,7 +54,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-3">
       <%= f.label :post_code,"郵便番号(ハイフンなし)", class: "rounded" %>
     </div>
@@ -64,7 +63,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-3">
       <%= f.label :address, "住所" %>
     </div>
@@ -73,7 +72,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-3">
       <%= f.label :tel_number, "電話番号(ハイフンなし)" %>
     </div>
@@ -83,7 +82,7 @@
   </div>
 
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-3">
       <%= f.label :password, "パスワード" %>
       <% if @minimum_password_length %>
@@ -94,9 +93,7 @@
       <%= f.password_field :password, autocomplete: "new-password", class: "rounded" %>
     </div>
   </div>
-
-
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-3">
       <%= f.label :password_confirmation, "パスワード(確認用)" %>
     </div>
@@ -104,15 +101,14 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded" %>
     </div>
   </div>
-
-  <div class="row">
-    <div class="">
+  <div class="row d-flex justify-content-center">
+    <div>
       <%= f.submit "新規登録", class:"btn btn-success" %>
     </div>
   </div>
   <% end %>
-
-
-
-  <%= render "public/shared/links" %>
+  <div class="row d-flex justify-content-start my-4">
+    <h6 class="">既に登録済みの方は<%= render "public/shared/links" %></h6>
+  </div>
+  
 </div>

@@ -9,7 +9,6 @@ class Admin::OrderDetailsController < ApplicationController
       @order.update(status: "production") if @order_detail.making_status == "production"
       is_updated = @order_details.all? { |order_detail| order_detail.making_status == "completed" }
       @order.update(status: "preparing") if is_updated
-    elsif 
       
     end
     redirect_to admin_order_path(@order)
