@@ -40,8 +40,12 @@ class Customer < ApplicationRecord
   #   end
   # end
 
-  # def active_for_authentication?
-  #   super && (is_deleted == true)
-  # end
+  
+  # enum is_active: {Available: true, Invalid: false}
+  
+  def active_for_authentication?
+    super && (self.is_active === true)
+  end
+  
 
 end
