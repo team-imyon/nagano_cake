@@ -24,16 +24,19 @@
         </tr>
       </table>
     </div>
-  <%end %>
+  <% end %>
   
 
   <diV class="row d-flex justify-content-start my-3">
     <table class="table table-bordered">
-      <tr>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>宛名</th>
-      </tr>
+      <thead class="bg-dark">
+        <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th></th>
+        </tr>
+      </thead>
       
       <% @address.each do |a| %>
         <tr>

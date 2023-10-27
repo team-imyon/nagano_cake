@@ -8,7 +8,7 @@
 
   <div class="row">
     <table class="table">
-      <thead>
+      <thead class="bg-dark">
         <tr>
           <th>会員ID</th>
           <th>氏名</th>
@@ -26,8 +26,7 @@
             <% if customer.is_active %>
               <p class="text-success"><strong>有効</strong></p>
             <% else %>
-            <p class="text-secondary"><strong>退会</strong></p>
-              
+              <p class="text-secondary"><strong>退会</strong></p>    
             <% end %>
           </td>
         </tr>
