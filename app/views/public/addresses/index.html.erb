@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row my-5">
-    <h5 class="d-flex justify-content-start border px-3">
-    配送先登録/一覧
-  </h5>
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      配送先登録/一覧
+    </h5>
   </div>
   <%= render 'layouts/errors', obj: @naddress %>
 
@@ -25,7 +25,7 @@
       </table>
     </div>
   <% end %>
-  
+
 
   <diV class="row d-flex justify-content-start my-3">
     <table class="table table-bordered">
@@ -37,7 +37,7 @@
           <th></th>
         </tr>
       </thead>
-      
+
       <% @address.each do |a| %>
         <tr>
           <td><%= a.post_code %></td>

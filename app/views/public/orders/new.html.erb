@@ -1,10 +1,11 @@
 <!--ryon-->
 <div class="container p-3">
-  <div class="row">
-      <h5 class="border d-flex justify-content-start my-5 px-3" >
+  <div class="row d-flex justify-content-center">
+      <h5 class="border p-3 my-3">
         注文情報入力
       </h5>
-    <div class="col-md-12">
+  </div>
+    <div class="row d-flex justify-content-center">
       <%= form_with model: Order.new, url: orders_confirm_path, method: :post do |f| %>
       <b>支払い方法</b><br>
       <!--ラジオボタンを使用-->

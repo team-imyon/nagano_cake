@@ -1,10 +1,11 @@
 <!--顧客の登録情報編集する画面-->
 <div class="container">
-  <div class="row">
-    <div class="col-auto">
-      <h4 class="my-3">会員情報編集</h4>
-    </div>
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      会員情報編集
+    </h5>
   </div>
+
   <div class="row d-flex justify-content-center">
       <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
       <table class="table table-borderless">
@@ -13,31 +14,31 @@
             <td><%= f.text_field :last_name, class: "rounded" %>
                 <%= f.text_field :first_name, class: "rounded" %></td>
           </tr>
-  
+
           <tr>
             <td width="30%">フリガナ</td>
             <td><%= f.text_field :furigana_last_name, class: "rounded" %>
             <%= f.text_field :furigana_first_name, class: "rounded" %></td>
           </tr>
-  
+
           <tr>
           <td width="30%">郵便番号</td>
           <td><%= f.text_field :post_code, class: "rounded" %></td>
           <td></td>
           </tr>
-  
+
           <tr colspan="2">
           <td width="30%">住所</td>
           <td><%= f.text_field :address, size: "50%", class: "rounded" %></td>
           <td></td>
           </tr>
-  
+
           <tr>
           <td width="30%">電話番号</td>
           <td><%= f.text_field :tel_number, class: "rounded" %></td>
           <td></td>
           </tr>
-  
+
           <tr>
           <td width="30%">メールアドレス</td>
           <td><%= f.text_field :email, class: "rounded" %></td>
