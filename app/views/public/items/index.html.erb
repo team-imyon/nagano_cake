@@ -1,9 +1,9 @@
 <!--<div class="container">-->
-  <div class="mt-2 px-5" >
+  <div class="row d-flex justify-content-center">
     <h4 style="display: inline-block; font-weight: bold;">商品一覧</h4>
     <h5 style="display: inline-block;">(全<%= @all_items.count %>件)</h5>
   </div>
-
+  <br>
   <div class="item-wrap">
   <!--#cssで定義したコンテンツを中央へ-->
     <% @items.each do |item| %>
@@ -28,6 +28,7 @@
             <% end %>
         </div>
       </div>
+
 
     <% end %>
   </div>
