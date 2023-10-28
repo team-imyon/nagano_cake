@@ -29,7 +29,7 @@ before_action :customer_state, only: [:create]
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
 protected
 # 退会しているかを判断するメソッド
   def customer_state
@@ -37,7 +37,8 @@ protected
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
     # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_active
+      #一致してるかつ退会してたら（!〇〇.is_active=有効状態の反転）
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to new_customer_registration_path
       else
