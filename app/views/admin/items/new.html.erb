@@ -1,9 +1,12 @@
 <!--商品新規登録-->
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>商品新規登録</h2>
-
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      商品新規登録
+    </h5>
+　</div>
+    
+    <div class="row d-flex justify-content-center">
       <%= render "layouts/errors", obj: @item %>
 
  　　   <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
@@ -46,11 +49,12 @@
           <%= f.label :is_active, "販売停止中", { value: :true } %>
         </td>
       </tr>
-
+    </table>
+    <div class="row d-flex justify-content-center">
       <tr>
         <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
       </tr>
-    </table>
+    </div>
     <% end %>
     </div>
   </div>
