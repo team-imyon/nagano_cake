@@ -1,10 +1,13 @@
 <% if @cart_items.empty? %>
 <div class="container">
-  <div class="row d-flex justify-content-between my-5 px-3">
-    <h5 class="border">ショッピングカート</h5>
-  </div>
   <div class="row d-flex justify-content-center">
-    <h4>カートにアイテムはありません</h4>
+    <h5 class="border p-3 my-3">
+      ショッピングカート
+    </h5>
+  </div>
+  <br>
+  <div class="row d-flex justify-content-center">
+    <h3>カートにアイテムはありません</h3>
   </div>
   <div class="row my-5 d-flex justify-content-center">
     <%= link_to "買い物を続ける", root_path , class:"btn btn-primary" %>

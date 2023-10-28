@@ -123,7 +123,6 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-
   def complete
   end
 
