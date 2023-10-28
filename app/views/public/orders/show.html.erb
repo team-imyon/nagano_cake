@@ -4,10 +4,12 @@
     <h5 class="border p-3 my-3">
         注文履歴詳細
     </h5>
-    
-    <div class="col-md-12">
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8">
       <h5><b>注文情報</b></h5>
-      <table class="table">
+      <table class="table table-bordered border-info">
         <!--注文日をYYYY/MM/DD表示-->
         <tr>
           <th class="bg-dark">注文日</th>
@@ -29,9 +31,8 @@
           <td><%= @order.status_i18n %></td>
         </tr>
       </table>
-
-  <div class="row">
-    <div class="col-4">
+    </div>
+        <div class="col-4">
       <h5><b>請求情報</b></h5>
       <table class="table table-bordered border-info">
 
@@ -50,9 +51,11 @@
           <td><%= @order.total_payment %>円</td>
         </tr>
       </table>
-    </div>  
-  </div>
+    </div> 
+  </div>    
   
+  <div class="row">
+    <div class="col-8">
       <h5><b>注文内容</b></h5>
       <table class="table">
         <thead class="bg-dark">
