@@ -42,17 +42,17 @@
       <table class="new_address">
         <tr>
           <td>郵便番号(ハイフンなし)</td>
-          <td><%= f.text_field :new_post_code %></td>
+          <td><%= f.text_field :new_post_code, class: "rounded" %></td>
         </tr>
 
         <tr>
           <td>住所</td>
-          <td><%= f.text_field :new_address %></td>
+          <td><%= f.text_field :new_address, size: 60, class: "rounded" %></td>
         </tr>
 
         <tr>
           <td>宛名</td>
-          <td><%= f.text_field :new_name %></td>
+          <td><%= f.text_field :new_name, class: "rounded" %></td>
         </tr>
       </table>
       <!--フォーム送信ボタン-->
