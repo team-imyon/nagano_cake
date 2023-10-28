@@ -20,11 +20,6 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  # def set_search
-  #   @search = Product.ransack(params[:q])
-  #   @search_products = @search.result
-  # end
-  
   protected
 
   def configure_permitted_parameters
