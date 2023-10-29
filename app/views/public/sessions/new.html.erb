@@ -1,44 +1,45 @@
 <div class="container">
-  <div class="row">
-    <h5 class="border d-flex justify-content-start my-3 px-3">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
       ログイン
     </h5>
   </div>
 
-  <div class="row">
-    <h6 class="offset-1 border my-3 px-3 ">
+  <div class="row d-flex justify-content-center">
+    <h6 class="my-3 px-3 border">
       会員の方はこちらからログイン
     </h6>
   </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="row d-flex justify-content-center">
-          <diV class="offset-1 col-2">
+          <div class="offset-1 col-2">
             <div class="field my-3" >
               <%= f.label :email, "メールアドレス", class: "my-3" %></br>
               <%= f.label :encrypted_password, "パスワード", class: "my-3" %>
             </div>
           </diV>
 
-          <diV class="col-4">
+          <div class="col-4">
             <div class="field my-3">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", size: 40, class: "rounded mx-auto my-3" %></br>
               <%= f.password_field :password, autocomplete: "current-password", size: 40, class: "rounded password my-3" %></br>
               <%= f.submit "ログイン",class:"btn btn-primary my-3" %>
             </div>
-          </diV>
+          </div>
       </div>
     <% end %>
 
-  <div class="row">
-    <h6 class="offset-1 my-3 px-3 border">
+  <div class="row d-flex justify-content-center">
+    <h6 class="my-3 px-3 border">
       会員登録がお済みでない方
     </h6>
   </div>
+
   <div class="row d-flex justify-content-center">
-    <diV class="col-6">
+    <!--<diV class="col-6">-->
         <%= render "public/shared/links" %>
-    </diV>
-  </diV>
+    <!--</diV>-->
+  </div>
 
 </div>

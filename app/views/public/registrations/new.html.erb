@@ -1,20 +1,21 @@
 <div class="container">
-  <div class="row">
-    <div class="border d-flex justify-content-center my-3 px-3">
-      <h5>新規会員登録</h5>
-    </div>
-  </div>
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      新規会員登録
+    </h5>
 
+  </div>
+  <br>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
-<div>
+
   <div class="row d-flex justify-content-center">
     <div class="col-2"></div>
     <div class="col-2">
       名前
     </div>
     <div class="col-1">
-      <%= f.label :last_name,  "(姓)" %>
+      <%= f.label :last_name, "(姓)" %>
     </div>
     <div class="col-2">
       <%= f.text_field :last_name , placeholder: "令和", class: "rounded" %>
@@ -108,14 +109,13 @@
     <div class="col-7">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded" %>
     </div>
-  </div>
-  <div class="row d-flex justify-content-center">
     <div>
       <%= f.submit "新規登録", class:"btn btn-success" %>
     </div>
   </div>
   <% end %>
-  <div class="row d-flex justify-content-start my-4">
+  
+  <div class="row d-flex justify-content-center my-4">
     <h6 class="">既に登録済みの方は<%= render "public/shared/links" %></h6>
   </div>
   
