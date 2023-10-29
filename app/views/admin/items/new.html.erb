@@ -1,0 +1,61 @@
+<!--商品新規登録-->
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      商品新規登録
+    </h5>
+　</div>
+    
+    <div class="row d-flex justify-content-center">
+      <%= render "layouts/errors", obj: @item %>
+
+ 　　   <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <td>商品画像</td>
+          <td><%= f.file_field :image, accept: "image/*", class: "rounded" %></td>
+        </tr>
+
+        <tr>
+          <td>商品名</td>
+          <td><%= f.text_field :name, style: "width:70%", placeholder: "商品名", class: "rounded" %></td>
+        </tr>
+
+        <tr>
+          <td>商品説明</td>
+          <td><%= f.text_area :explanation, style: "width:70%", rows: "5", placeholder: "ここに説明文を記述します", class: "rounded" %></td>
+        </tr>
+
+
+
+        <tr>
+          <td>ジャンル</td>
+          <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "rounded" %></td>
+        </tr>
+
+        <tr>
+          <td>税抜価格</td>
+          <td><%= f.text_field :price, placeholder: "1000", class: "rounded" %>円</td>
+        </tr>
+
+
+      <tr>
+        <td>販売ステータス</td>
+        <td>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売中", { value: :false }  %>
+
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売停止中", { value: :true } %>
+        </td>
+      </tr>
+    </table>
+    <div class="row d-flex justify-content-center">
+      <tr>
+        <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+      </tr>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>

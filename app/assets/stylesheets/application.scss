@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+header{ 
+  font-family: "Sawarabi Mincho"; 
+}
+
+main{ 
+  font-family: "Sawarabi Mincho"; 
+}
+
+.text-content {
+  text-align: center; /* テキストを中央揃え */
+}
+
+
+.field_with_errors {
+  display: contents;
+}
+
+footer{ 
+  font-family: "Sawarabi Mincho"; 
+}
+

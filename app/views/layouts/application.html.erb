@@ -1,16 +1,120 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <head>
+      <title>NaganoCake</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'custom' %>
+      <style>
+        .btn-lee {
+            color: #fff;
+            background-color: #96514d;
+            border-color: #96514d;
+        }
+      </style>
+    </head>
 
-  <body>
+    <body>
+      <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d1b3aa;">
+        <div class="container">
+          <div class="d-flex">
+            <a class="navbar-brand" href="/"><%= image_tag 'logo.png', :size =>'100x100' %></a>
+            <% if customer_signed_in? %>
+              <div class="nav-item text-light my-auto ml-4">
+                ようこそ、<%= current_customer.last_name %>さん！
+              </div>
+            <% end %>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'マイページ', customers_my_page_path, class: 'nav-link text-light m-2' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "商品一覧", items_path, class: 'nav-link text-light m-2' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "カート", cart_items_path, class: 'nav-link text-light m-2' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light m-2' %>
+                </li>
+
+              <% elsif admin_signed_in? %>
+
+                <li class="nav-item">
+                  <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-light m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-light m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "注文履歴一覧", admin_path, class: 'nav-link text-light m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-light m-2' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light m-2' %>
+                </li>
+
+              <% else %>
+
+                <li class="nav-item ">
+                  <%= link_to "About", about_path, class: 'nav-link text-light m-2' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "商品一覧", items_path, class: 'nav-link text-light m-2' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light m-2' %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light m-2' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      </header>
+
+    <main class="pb-5">
+      <row>
+      <div class="d-flex justify-content-center mt-3">
+        <p class="notice alert-info px-3" role="alert"><%= notice %></p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p class="arlet alert-danger px-3" role="alert"><%= alert %></p>
+      </div>
+      </row>
     <%= yield %>
+    </main>
+
+    <footer class='fixed-bottom text-light' style="background-color: #c2b1a5;">
+      <div class="container">
+        	<div class='row'>
+          	<div class='mx-auto my-2'>
+          		<h5>NAGANO CAKE</h5>
+          	</div>
+          </div>
+      </div>
+    </footer>
   </body>
 </html>

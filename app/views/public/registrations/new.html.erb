@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      新規会員登録
+    </h5>
+
+  </div>
+  <br>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-2"></div>
+    <div class="col-2">
+      名前
+    </div>
+    <div class="col-1">
+      <%= f.label :last_name, "(姓)" %>
+    </div>
+    <div class="col-2">
+      <%= f.text_field :last_name , placeholder: "令和", class: "rounded" %>
+    </div>
+    <div class="col-1">
+      <%= f.label :first_name, "(名)", class: "rounded" %>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :first_name, placeholder: "道子", class: "rounded" %>
+    </div>
+  </div>
+
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-2"></div>
+    <div class="col-2">
+      フリガナ
+    </div>
+    <div class="col-1">
+      <%= f.label :furigana_last_name, "(セイ)" %>
+    </div>
+    <div class="col-2">
+      <%= f.text_field :furigana_last_name, placeholder: "レイワ", class: "rounded" %>
+    </div>
+    <div class="col-1">
+      <%= f.label :furigana_first_name, "(メイ)" %>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :furigana_first_name, placeholder: "ミチコ", class: "rounded" %>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+     <div class="col-2"></div>
+    <div class="col-3">
+      <%= f.label :email, "メールアドレス" %>
+    </div>
+    <div class="col-7">
+      <%= f.email_field :email, placeholder: "sample@example.com", class: "rounded" %>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <%= f.label :post_code,"郵便番号(ハイフンなし)", class: "rounded" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :post_code, placeholder: "0000000", class: "rounded" %>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+     <div class="col-2"></div>
+    <div class="col-3">
+      <%= f.label :address, "住所" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :address, :size=>"60", placeholder: "東京都渋谷区代々木神園町0-0", class: "rounded" %>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+     <div class="col-2"></div>
+    <div class="col-3">
+      <%= f.label :tel_number, "電話番号(ハイフンなし)" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :tel_number, placeholder: "0000000000", class: "rounded" %>
+    </div>
+  </div>
+
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <%= f.label :password, "パスワード" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %>
+    </div>
+    <div class="col-7">
+      <%= f.password_field :password, autocomplete: "new-password", class: "rounded" %>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+     <div class="col-2"></div>
+    <div class="col-3">
+      <%= f.label :password_confirmation, "パスワード(確認用)" %>
+    </div>
+    <div class="col-7">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded" %>
+    </div>
+    <div>
+      <%= f.submit "新規登録", class:"btn btn-success" %>
+    </div>
+  </div>
+  <% end %>
+  
+  <div class="row d-flex justify-content-center my-4">
+    <h6 class="">既に登録済みの方は<%= render "public/shared/links" %></h6>
+  </div>
+  
+</div>

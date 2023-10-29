@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      <%= @customer.full_name %>様の注文履歴一覧
+    </h5>
+
+      <table class="table">
+        <thead class="bg-dark">
+          <tr>
+            <th>購入日時</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <!--各注文情報に対して繰り返し処理-->
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <!--注文日をYYYY/MM/DD表示-->
+              <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></td>
+              <!--注文個数-->
+              <td><%= order.order_details.sum(:amount)%></td>
+              <!--注文ステータスを表示-->
+              <!--status_i18n メソッドでステータスを国際化されたテキストに変換表示-->
+              <td><%= order.status_i18n %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+      <!--ページネーションを表示-->
+
+      <div class="d-flex justify-content-center p-3 my-3">
+        
+        <%= paginate @orders, theme: 'bootstrap-5' %>
+      </div>
+  </div>
+</div>

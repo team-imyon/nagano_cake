@@ -1,0 +1,69 @@
+<!--ryon-->
+<div class="container p-3">
+  <div class="row d-flex justify-content-center">
+      <h5 class="border p-3 my-3">
+        注文情報入力
+      </h5>
+  </div>
+    <div class="row d-flex justify-content-center">
+      <%= form_with model: Order.new, url: orders_confirm_path, method: :post do |f| %>
+      <b>支払い方法</b><br>
+      <!--ラジオボタンを使用-->
+      <!--クレジットカードか銀行振込のどちらかを選択-->
+      <%= f.radio_button :payment_method, :credit_card, checked: true %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], {value: :credit_card} %>
+      <br>
+      <%= f.radio_button :payment_method, :transfer %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], {value: :transfer} %>
+
+      <div>
+        <br>
+        <b>お届け先</b><br>
+        <!--ラジオボタンにてお届け先の選択-->
+        <%= f.radio_button :address_type, "customer_address", checked: true %>
+        <%= f.label :address_type, "ご自身の住所" %><br>
+        〒<%= current_customer.post_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name %>
+      </div>
+
+      <br>
+      <%=f.radio_button :address_type, [:registered_address] %>
+      <%= f.label :address_type, "登録済住所" %>
+      <!--登録済住所から選択の場合、ドロップダウンリストで表示-->
+      <!--選択できるように登録済住所の一覧表示-->
+      <!--current_member.addresses.allでログイン中のユーザーに紐づけられた全Addressデータを取得-->
+      <!--mapメソッドで各Addressのデータをjoinメソッドで繋げる-->
+      <!--m.idで各アドレスのidもパラメータとして送っている-->
+      <%= f.select :registered_address_id, current_customer.addresses.all.map { |m| [[m.post_code, m.address, m.name].join(" "), m.id] } ,include_blank: "選択" %>
+      <br>
+      <!--新しいお届け住所の登録-->
+      <%= f.radio_button :address_type, "new_address" %>
+      <%= f.label :address_type, "新しいお届け先" %>
+
+      <!--新しいお届け住所の入力フィールド-->
+      <table class="new_address">
+        <tr>
+          <td>郵便番号(ハイフンなし)</td>
+          <td><%= f.text_field :new_post_code, class: "rounded" %></td>
+        </tr>
+
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :new_address, size: 60, class: "rounded" %></td>
+        </tr>
+
+        <tr>
+          <td>宛名</td>
+          <td><%= f.text_field :new_name, class: "rounded" %></td>
+        </tr>
+      </table>
+      <!--フォーム送信ボタン-->
+      <!--注文情報の確認画面に進む-->
+      <br>
+
+        <div class="row d-flex justify-content-center">
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+      </div>
+  </div>

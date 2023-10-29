@@ -1,0 +1,15 @@
+// 各ボタンの色をカスタマイズできます！
+
+// カスタムプライマリカラー
+$primary: #007aa3;
+$secondary: #b3b3b3;
+$success: #366d4b;
+$info: #cc0000;
+$warning:#b30000;
+$danger: #800000;
+// $light:
+$dark:#EDE4E0;
+
+// Bootstrapをインポート
+@import 'bootstrap/scss/bootstrap';
+

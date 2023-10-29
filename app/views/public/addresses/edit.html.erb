@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+    配送先編集
+  </h5>
+  </div>
+  <%= render "layouts/errors", obj: @address %>
+  <%= form_with model: @address do |f| %>
+    <div class="row-auto d-flex justify-content-center">
+      <diV class="col-auto">
+        <div class="field my-1" >
+          <%= f.label :"郵便番号(ハイフンなし)", class: "my-1" %></br>
+          <%= f.label :"住所", class: "my-1" %></br>
+          <%= f.label :"宛名", class: "my-1" %>
+        </div>
+      </div>
+
+      <div class="col-auto">
+        <div class="field my-1">
+          <%= f.text_field :post_code, class: "my-1", style: "width:70%" %></br>
+          <%= f.text_field :address, class:"my-1", style: "width:100%" %></br>
+          <%= f.text_field :name, class: "my-1", style: "width:70%" %>
+          <%= f.submit "変更内容を保存",class:"btn btn-success my-1" %>
+        </div>
+      </div>
+    </div>
+  <%end %>
+</div>
